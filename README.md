@@ -33,3 +33,8 @@ Website resmi organisasi **HIMASTIKA** (Himpunan Mahasiswa Jurusan Teknik Inform
    ```bash
    git clone https://github.com/namauser/himastika-web.git
    cd himastika-web
+
+
+---
+Usename: admin
+Password: himastikagg@
