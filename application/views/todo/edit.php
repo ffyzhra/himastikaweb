@@ -1,57 +1,27 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<title>Edit Tugas | HIMASTIKA</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-    body { font-family: 'Poppins', sans-serif; }
-</style>
-</head>
-<body class="bg-gray-100">
-
-<!-- Navbar -->
-<nav class="bg-blue-700 text-white p-4 flex justify-between items-center shadow-md">
-  <h1 class="text-xl font-bold">Edit Tugas</h1>
-  <a href="<?= base_url('todo'); ?>" 
-     class="bg-white text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-100 transition font-semibold">
-    Kembali
-  </a>
-</nav>
-
-<!-- Container -->
-<div class="p-6 max-w-lg mx-auto">
-  <div class="bg-white p-8 rounded-xl shadow-md">
-    <h2 class="text-2xl font-semibold mb-6 text-gray-700">Perbarui Informasi Tugas</h2>
-    
-    <form action="<?= base_url('todo/update/'.$todo->id); ?>" method="post" class="space-y-5">
-      
-      <!-- Nama Tugas -->
-      <div>
-        <label class="block text-gray-600 font-medium mb-2">Nama Tugas</label>
-        <input type="text" name="task" value="<?= htmlspecialchars($todo->task); ?>" required
-               class="w-full border px-4 py-3 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none">
+<?php $has_deadline = !empty($todo->deadline) && strpos($todo->deadline, '0000-00-00') !== 0; ?>
+<div class="card card-narrow">
+  <div class="card-head">
+    <div>
+      <h2>Edit Tugas</h2>
+      <p>Ubah nama tugas atau deadline-nya.</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <form action="<?= base_url('todo/update/' . $todo->id); ?>" method="post" class="form-grid">
+      <div class="field">
+        <label for="task">Tugas</label>
+        <input class="input" type="text" id="task" name="task" value="<?= html_escape($todo->task); ?>" required>
       </div>
-
-      <!-- Deadline -->
-      <div>
-        <label class="block text-gray-600 font-medium mb-2">Tenggat Waktu</label>
-        <input type="datetime-local" name="deadline" 
-               value="<?= (!empty($todo->deadline) && $todo->deadline != '0000-00-00 00:00:00') 
-                          ? date('Y-m-d\TH:i', strtotime($todo->deadline)) 
-                          : date('Y-m-d\TH:i'); ?>"
-               class="w-full border px-4 py-3 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none">
+      <div class="field" style="max-width:300px">
+        <label for="deadline">Deadline</label>
+        <input class="input" type="datetime-local" id="deadline" name="deadline"
+               value="<?= $has_deadline ? date('Y-m-d\TH:i', strtotime($todo->deadline)) : ''; ?>">
+        <span class="hint">Kosongkan jika tidak ada deadline.</span>
       </div>
-
-      <!-- Tombol Simpan -->
-      <button type="submit" 
-              class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
-        ✅ Simpan Perubahan
-      </button>
+      <div class="form-actions">
+        <a href="<?= base_url('todo'); ?>" class="btn btn-ghost"><?= icon('arrow-left'); ?> Kembali</a>
+        <button type="submit" class="btn btn-primary"><?= icon('check'); ?> Simpan Perubahan</button>
+      </div>
     </form>
   </div>
 </div>
-
-</body>
-</html>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Proker extends CI_Controller {
+class Proker extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -12,12 +12,12 @@ class Proker extends CI_Controller {
     // ✅ List Semua Proker
     public function index() {
         $data['prokers'] = $this->Proker_model->getAll();
-        $this->load->view('proker/index', $data);
+        $this->render('proker/index', $data, 'Program Kerja', 'proker');
     }
 
     // ✅ Tampilkan Form Tambah
     public function create() {
-        $this->load->view('proker/create');
+        $this->render('proker/create', [], 'Tambah Program Kerja', 'proker');
     }
 
     // ✅ Simpan Data Baru
@@ -30,6 +30,7 @@ class Proker extends CI_Controller {
         ];
 
         if ($this->Proker_model->insert($data)) {
+            $this->session->set_flashdata('success', 'Program kerja berhasil ditambahkan.');
             redirect('proker');
         } else {
             echo "Gagal menambahkan data!";
@@ -42,7 +43,7 @@ class Proker extends CI_Controller {
         if (!$data['proker']) {
             show_404();
         }
-        $this->load->view('proker/edit', $data);
+        $this->render('proker/edit', $data, 'Edit Program Kerja', 'proker');
     }
 
     // ✅ Update Data
@@ -54,6 +55,7 @@ class Proker extends CI_Controller {
         ];
 
         if ($this->Proker_model->update($id, $data)) {
+            $this->session->set_flashdata('success', 'Program kerja berhasil diperbarui.');
             redirect('proker');
         } else {
             echo "Gagal update data!";
@@ -62,7 +64,7 @@ class Proker extends CI_Controller {
 
     // ✅ Update Status (AJAX)
     public function update_status($id) {
-        $status = $this->input->post('status');
+        $status = $this->input->post('status') ? 1 : 0;
         if ($this->Proker_model->update($id, ['status' => $status])) {
             echo json_encode(['success' => true]);
         } else {
@@ -73,6 +75,7 @@ class Proker extends CI_Controller {
     // ✅ Hapus Data
     public function delete($id) {
         if ($this->Proker_model->delete($id)) {
+            $this->session->set_flashdata('success', 'Program kerja berhasil dihapus.');
             redirect('proker');
         } else {
             echo "Gagal hapus data!";

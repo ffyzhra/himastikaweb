@@ -7,7 +7,7 @@ class Informasi_model extends CI_Model {
 
     // ✅ Ambil semua data informasi
     public function getAll() {
-        return $this->db->get($this->table)->result();
+        return $this->db->order_by('tanggal', 'DESC')->get($this->table)->result();
     }
 
     // ✅ Ambil berdasarkan ID

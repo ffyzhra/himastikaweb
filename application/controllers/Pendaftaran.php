@@ -4,7 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-class Pendaftaran extends CI_Controller {
+class Pendaftaran extends Admin_Controller {
+
+    // Halaman yang boleh dibuka calon anggota tanpa login
+    protected $public_methods = ['form', 'store', 'sukses'];
 
     public function __construct() {
         parent::__construct();
@@ -28,12 +31,17 @@ class Pendaftaran extends CI_Controller {
     // Ambil data pendaftar sesuai filter
     $data['pendaftaran'] = $this->Pendaftaran_model->get_filtered($search, $divisi);
 
-    $this->load->view('pendaftaran/list', $data);
+    $this->render('pendaftaran/list', $data, 'Pendaftar', 'pendaftaran');
 }
 
-    // ✅ Form tambah pendaftar
+    // ✅ Form pendaftaran (publik)
     public function form() {
         $this->load->view('pendaftaran/form');
+    }
+
+    // ✅ Halaman terima kasih setelah mendaftar (publik)
+    public function sukses() {
+        $this->load->view('pendaftaran/sukses');
     }
 
     // ✅ Simpan data pendaftaran
@@ -79,18 +87,18 @@ class Pendaftaran extends CI_Controller {
     'tanggal_daftar' => date('Y-m-d H:i:s')
 ];
         if ($this->Pendaftaran_model->insert($data)) {
-            $this->session->set_flashdata('success', 'Pendaftaran berhasil disimpan!');
-        } else {
-            $this->session->set_flashdata('error', 'Gagal menyimpan data!');
+            redirect('pendaftaran/sukses');
         }
 
-        redirect('pendaftaran');
+        $this->session->set_flashdata('error', 'Gagal menyimpan pendaftaran. Silakan coba lagi.');
+        redirect('pendaftaran/form');
     }
 
     // ✅ Update status (Terima/Tolak)
     public function update_status($id, $status) {
         if (in_array($status, ['diterima', 'ditolak'])) {
             $this->Pendaftaran_model->update($id, ['status' => $status]);
+            $this->session->set_flashdata('success', 'Status pendaftar diubah menjadi ' . $status . '.');
         }
         redirect('pendaftaran');
     }
@@ -102,6 +110,7 @@ class Pendaftaran extends CI_Controller {
             if (!empty($detail->krs) && file_exists('./uploads/'.$detail->krs)) unlink('./uploads/'.$detail->krs);
             if (!empty($detail->khs) && file_exists('./uploads/'.$detail->khs)) unlink('./uploads/'.$detail->khs);
             $this->Pendaftaran_model->delete($id);
+            $this->session->set_flashdata('success', 'Data pendaftar berhasil dihapus.');
         }
         redirect('pendaftaran');
     }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Todo extends CI_Controller {
+class Todo extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -10,7 +10,7 @@ class Todo extends CI_Controller {
 
     public function index() {
         $data['todos'] = $this->Todo_model->getAll();
-        $this->load->view('todo/index', $data);
+        $this->render('todo/index', $data, 'To-Do List', 'todo');
     }
 
     public function store() {
@@ -21,6 +21,7 @@ class Todo extends CI_Controller {
         ];
 
         $this->Todo_model->insert($data);
+        $this->session->set_flashdata('success', 'Tugas baru ditambahkan.');
         redirect('todo');
     }
 
@@ -39,7 +40,7 @@ class Todo extends CI_Controller {
         if (!$data['todo']) {
             show_404();
         }
-        $this->load->view('todo/edit', $data);
+        $this->render('todo/edit', $data, 'Edit Tugas', 'todo');
     }
 
     public function update($id) {
@@ -52,6 +53,7 @@ class Todo extends CI_Controller {
         ];
 
         $this->Todo_model->update($id, $data);
+        $this->session->set_flashdata('success', 'Tugas berhasil diperbarui.');
         redirect('todo');
     }
 }

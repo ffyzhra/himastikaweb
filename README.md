@@ -6,18 +6,18 @@ Built with **CodeIgniter 3**, PHP and MySQL.
 
 ## Features
 
-**Public site**
-- Association profile, vision & mission, divisions and board members
-- Work programs (*program kerja*) already running
-- Online member registration with KRS/KHS upload and validation
-- Feedback form for each division
+**Public website** (`/`)
+- Landing page with the association profile, divisions, work programmes, announcements and board members, all pulled live from the database
+- Online member registration (`/daftar`) with KRS/KHS upload and a thank-you page
+- Responsive layout for phones and desktops
 
-**Admin panel**
-- Member management (CRUD)
-- Review and approve new registrations
-- Work program and announcement management
-- To-do list for association tasks
-- User and role management, passwords hashed with bcrypt
+**Admin panel** (`/login`)
+- Dashboard with totals, cabinet progress, latest registrants and announcements
+- Member management with search and division filter
+- Review registrations: accept, reject or delete, view uploaded files
+- Work programmes with a one-click "done" switch
+- Announcements and a to-do list for the board
+- Every admin page requires login; passwords hashed with bcrypt
 
 ## Tech stack
 
@@ -31,10 +31,18 @@ Built with **CodeIgniter 3**, PHP and MySQL.
 
 ```
 application/
-├── controllers/   # Anggota, Pendaftaran, Proker, Informasi, Todo, User, Login, ...
+├── core/MY_Controller.php   # Admin_Controller: login guard + shared layout
+├── controllers/             # Home (public), Dashboard, Anggota, Pendaftaran, Proker, Informasi, Todo, Login
+├── helpers/ui_helper.php    # icons, initials, Indonesian dates
 ├── models/
 └── views/
-assets/            # logos and static images
+    ├── layouts/             # admin + public header/footer
+    ├── home/                # public landing page
+    └── ...
+assets/
+├── css/app.css              # design system (no CSS framework needed)
+├── js/app.js                # sidebar, confirmations, status switch, mobile menu
+└── img/
 uploads/           # uploaded files (ignored by git)
 himastika_db.sql   # database schema + dummy seed data
 ```
@@ -48,7 +56,7 @@ himastika_db.sql   # database schema + dummy seed data
    ```
 2. Create a database named `himastika_db` in phpMyAdmin and import `himastika_db.sql`.
 3. Check the settings in `application/config/database.php` (default: `root`, no password) and `base_url` in `application/config/config.php` (`http://localhost/himastika/`).
-4. Open `http://localhost/himastika/`.
+4. Open `http://localhost/himastika/` for the public site and `http://localhost/himastika/login` for the admin panel.
 
 **Demo login (local only):** `admin` / `admin123`. Change it right after installing.
 

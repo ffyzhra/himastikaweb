@@ -1,5 +1,7 @@
 <?php
-class Dashboard extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Dashboard extends Admin_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model(['Anggota_model','Todo_model','Pendaftaran_model','Proker_model','Informasi_model']);
@@ -12,10 +14,15 @@ class Dashboard extends CI_Controller {
         $data['totalProker']     = $this->Proker_model->countAll();
         $data['totalInformasi']  = $this->Informasi_model->countAll();
 
-        // ✅ Ambil data terbaru untuk list di dashboard
-        $data['proker']     = $this->Proker_model->getLatest(3);
-        $data['informasi']  = $this->Informasi_model->getLatest(3);
+        $data['prokerSelesai']   = $this->db->where('status', 1)->count_all_results('proker');
+        $data['pendingCount']    = $this->db->where('status', 'pending')->count_all_results('pendaftaran');
+        $data['todoPending']     = $this->db->where('status', 'pending')->count_all_results('todos');
 
-        $this->load->view('dashboard', $data);
+        // Data terbaru untuk list di dashboard
+        $data['proker']      = $this->Proker_model->getLatest(4);
+        $data['informasi']   = $this->Informasi_model->getLatest(3);
+        $data['pendaftar']   = $this->db->order_by('tanggal_daftar', 'DESC')->limit(4)->get('pendaftaran')->result();
+
+        $this->render('dashboard', $data, 'Dashboard', 'dashboard');
     }
 }

@@ -1,115 +1,124 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard HIMASTIKA</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  body { font-family: 'Poppins', sans-serif; }
-</style>
-</head>
-<body class="bg-gray-100 flex">
-
-<!-- Sidebar -->
-<aside class="w-64 bg-blue-800 text-white min-h-screen flex flex-col justify-between shadow-lg">
+<?php
+$username = $this->session->userdata('username') ?: 'Admin';
+$persen = $totalProker > 0 ? round($prokerSelesai / $totalProker * 100) : 0;
+$cards = [
+    ['Anggota',       $totalAnggota,   'anggota',     'users',     'tone-blue'],
+    ['Pendaftar',     $totalPendaftar, 'pendaftaran', 'user-plus', 'tone-yellow'],
+    ['Program Kerja', $totalProker,    'proker',      'clipboard', 'tone-green'],
+    ['Informasi',     $totalInformasi, 'informasi',   'megaphone', 'tone-purple'],
+    ['To-Do',         $totalTodo,      'todo',        'check-sq',  'tone-rose'],
+];
+?>
+<section class="welcome">
   <div>
-    <!-- Logo -->
-    <div class="flex flex-col items-center py-6 border-b border-blue-600">
-      <img src="<?= base_url('assets/img/LOGO HIMASTIKA.jpg'); ?>" alt="Logo HIMASTIKA" class="w-20 h-20 rounded-full mb-3 border-4 border-white">
-      <h1 class="text-xl font-bold">HIMASTIKA UEU</h1>
-      <p class="text-blue-300 text-sm">Kabinet Sinergi Harmoni</p>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="mt-6 space-y-2 px-4">
-      <a href="<?= base_url('dashboard'); ?>" class="block px-4 py-2 rounded-lg hover:bg-blue-700 font-medium">🏠 Dashboard</a>
-      <a href="<?= base_url('anggota'); ?>" class="block px-4 py-2 rounded-lg hover:bg-blue-700 font-medium">👥 Anggota</a>
-      <a href="<?= base_url('pendaftaran'); ?>" class="block px-4 py-2 rounded-lg hover:bg-blue-700 font-medium">📝 Pendaftar</a>
-      <a href="<?= base_url('proker'); ?>" class="block px-4 py-2 rounded-lg hover:bg-blue-700 font-medium">📋 Program Kerja</a>
-      <a href="<?= base_url('informasi'); ?>" class="block px-4 py-2 rounded-lg hover:bg-blue-700 font-medium">ℹ️ Informasi</a>
-      <a href="<?= base_url('todo'); ?>" class="block px-4 py-2 rounded-lg hover:bg-blue-700 font-medium">✅ To-Do List</a>
-    </nav>
+    <h2>Halo, <?= html_escape($username); ?> 👋</h2>
+    <p>
+      <?php if ($pendingCount > 0): ?>
+        Ada <b><?= $pendingCount; ?> pendaftar</b> yang menunggu keputusan<?= $todoPending > 0 ? ' dan <b>' . $todoPending . ' tugas</b> belum selesai' : ''; ?>.
+      <?php else: ?>
+        Semua pendaftar sudah diproses. Kerja bagus!
+      <?php endif; ?>
+    </p>
   </div>
-
-  <!-- Logout -->
-  <div class="p-4">
-    <a href="<?= base_url('login/logout'); ?>" class="block bg-red-500 hover:bg-red-600 text-center py-2 rounded-lg font-semibold">
-      Logout
-    </a>
+  <div class="actions">
+    <a href="<?= base_url('pendaftaran'); ?>" class="btn btn-yellow"><?= icon('user-plus'); ?> Tinjau Pendaftar</a>
+    <a href="<?= base_url('informasi/create'); ?>" class="btn btn-outline-light"><?= icon('megaphone'); ?> Buat Informasi</a>
   </div>
-</aside>
+</section>
 
-<!-- Main Content -->
-<div class="flex-1">
-  <!-- Header -->
-  <header class="bg-white p-6 shadow flex justify-between items-center">
-    <div>
-      <h2 class="text-2xl font-semibold text-gray-700">Selamat Datang, 
-        <span class="text-blue-600"><?= $this->session->userdata('nama'); ?></span>
-      </h2>
-      <p class="text-gray-500 text-sm">Dashboard HIMASTIKA</p>
-    </div>
-  </header>
-
-  <!-- Cards Section -->
-  <section class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-4">
-    <?php
-      $cards = [
-        ['label'=>'Anggota','count'=>$totalAnggota ?? 0,'url'=>'anggota','icon'=>'👥'],
-        ['label'=>'To-Do','count'=>$totalTodo ?? 0,'url'=>'todo','icon'=>'✅'],
-        ['label'=>'Pendaftar','count'=>$totalPendaftar ?? 0,'url'=>'pendaftaran','icon'=>'📝'],
-        ['label'=>'Proker','count'=>$totalProker ?? 0,'url'=>'proker','icon'=>'📋'],
-        ['label'=>'Informasi','count'=>$totalInformasi ?? 0,'url'=>'informasi','icon'=>'ℹ️'],
-      ];
-      foreach ($cards as $c): ?>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-        <div class="text-4xl mb-2"><?= $c['icon']; ?></div>
-        <h3 class="text-gray-600 font-medium"><?= $c['label']; ?></h3>
-        <p class="text-3xl font-bold text-blue-600"><?= $c['count']; ?></p>
-        <a href="<?= base_url($c['url']); ?>" class="text-blue-500 hover:underline text-sm">Lihat Detail</a>
+<section class="stats">
+  <?php foreach ($cards as $c): ?>
+    <a href="<?= base_url($c[2]); ?>" class="card stat">
+      <span class="stat-icon <?= $c[4]; ?>"><?= icon($c[3]); ?></span>
+      <div>
+        <div class="stat-num"><?= (int) $c[1]; ?></div>
+        <div class="stat-label"><?= $c[0]; ?></div>
       </div>
-    <?php endforeach; ?>
-  </section>
+    </a>
+  <?php endforeach; ?>
+</section>
 
-  <!-- Proker & Informasi -->
-  <section class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Program Kerja -->
-    <div class="bg-white p-6 rounded-xl shadow">
-      <h3 class="text-xl font-semibold text-gray-700 mb-4">Program Kerja Aktif</h3>
-      <?php if(!empty($proker)): ?>
-      <ul class="list-disc pl-5 text-gray-600 space-y-2">
-        <?php foreach($proker as $p): ?>
-          <li><?= htmlspecialchars($p->judul); ?> - <?= date('d M Y', strtotime($p->tanggal)); ?></li>
+<section class="grid-3-2">
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <h2>Program Kerja</h2>
+        <p><?= $prokerSelesai; ?> dari <?= $totalProker; ?> program selesai</p>
+      </div>
+      <a href="<?= base_url('proker'); ?>" class="btn btn-ghost btn-sm">Lihat semua <?= icon('arrow-right'); ?></a>
+    </div>
+    <div class="card-body" style="padding-bottom:6px">
+      <div style="display:flex;justify-content:space-between;font-size:.82rem;font-weight:600;margin-bottom:8px">
+        <span>Progres kabinet</span><span><?= $persen; ?>%</span>
+      </div>
+      <div class="progress"><span style="width:<?= $persen; ?>%"></span></div>
+    </div>
+    <?php if (!empty($proker)): ?>
+      <ul class="list">
+        <?php foreach ($proker as $p): ?>
+          <li>
+            <span class="date-chip"><b><?= date('j', strtotime($p->tanggal)); ?></b><small><?= bulan_singkat($p->tanggal); ?></small></span>
+            <div style="min-width:0;flex:1">
+              <div class="title"><?= html_escape($p->judul); ?></div>
+              <div class="meta"><?= tgl($p->tanggal); ?></div>
+            </div>
+            <?php if ((int) $p->status === 1): ?>
+              <span class="badge badge-done">Selesai</span>
+            <?php else: ?>
+              <span class="badge">Berjalan</span>
+            <?php endif; ?>
+          </li>
         <?php endforeach; ?>
       </ul>
+    <?php else: ?>
+      <div class="empty"><?= icon('clipboard'); ?> Belum ada program kerja.</div>
+    <?php endif; ?>
+  </div>
+
+  <div style="display:grid;gap:24px;align-content:start">
+    <div class="card">
+      <div class="card-head">
+        <h2>Pendaftar Terbaru</h2>
+        <a href="<?= base_url('pendaftaran'); ?>" class="btn btn-ghost btn-sm">Semua</a>
+      </div>
+      <?php if (!empty($pendaftar)): ?>
+        <ul class="list">
+          <?php foreach ($pendaftar as $d): $st = $d->status ?: 'pending'; ?>
+            <li>
+              <span class="avatar"><?= html_escape(initials($d->nama)); ?></span>
+              <div style="min-width:0;flex:1">
+                <div class="title"><?= html_escape($d->nama); ?></div>
+                <div class="meta"><?= html_escape($d->divisi); ?></div>
+              </div>
+              <span class="badge badge-<?= html_escape($st); ?>"><?= ucfirst(html_escape($st)); ?></span>
+            </li>
+          <?php endforeach; ?>
+        </ul>
       <?php else: ?>
-        <p class="text-gray-400">Belum ada program kerja.</p>
+        <div class="empty"><?= icon('user-plus'); ?> Belum ada pendaftar.</div>
       <?php endif; ?>
-      <a href="<?= base_url('proker'); ?>" class="text-blue-600 font-semibold hover:underline mt-3 block">
-        Lihat Semua Proker →
-      </a>
     </div>
 
-    <!-- Informasi -->
-    <div class="bg-white p-6 rounded-xl shadow">
-      <h3 class="text-xl font-semibold text-gray-700 mb-4">Informasi Terbaru</h3>
-      <?php if(!empty($informasi)): ?>
-      <ul class="list-disc pl-5 text-gray-600 space-y-2">
-        <?php foreach($informasi as $i): ?>
-          <li><?= htmlspecialchars($i->judul); ?></li>
-        <?php endforeach; ?>
-      </ul>
+    <div class="card">
+      <div class="card-head">
+        <h2>Informasi Terbaru</h2>
+        <a href="<?= base_url('informasi'); ?>" class="btn btn-ghost btn-sm">Semua</a>
+      </div>
+      <?php if (!empty($informasi)): ?>
+        <ul class="list">
+          <?php foreach ($informasi as $i): ?>
+            <li>
+              <span class="stat-icon tone-purple" style="width:36px;height:36px"><?= icon('megaphone'); ?></span>
+              <div style="min-width:0;flex:1">
+                <div class="title"><?= html_escape($i->judul); ?></div>
+                <div class="meta"><?= tgl($i->tanggal); ?></div>
+              </div>
+            </li>
+          <?php endforeach; ?>
+        </ul>
       <?php else: ?>
-        <p class="text-gray-400">Belum ada informasi terbaru.</p>
+        <div class="empty"><?= icon('megaphone'); ?> Belum ada informasi.</div>
       <?php endif; ?>
-      <a href="<?= base_url('informasi'); ?>" class="text-blue-600 font-semibold hover:underline mt-3 block">
-        Lihat Semua Informasi →
-      </a>
     </div>
-  </section>
-</div>
-
-</body>
-</html>
+  </div>
+</section>

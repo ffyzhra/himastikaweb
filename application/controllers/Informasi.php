@@ -1,5 +1,7 @@
 <?php
-class Informasi extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Informasi extends Admin_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('Informasi_model');
@@ -7,11 +9,11 @@ class Informasi extends CI_Controller {
 
     public function index(){
         $data['informasi'] = $this->Informasi_model->getAll();
-        $this->load->view('informasi/index', $data);
+        $this->render('informasi/index', $data, 'Informasi', 'informasi');
     }
 
     public function create(){
-        $this->load->view('informasi/form');
+        $this->render('informasi/form', [], 'Tambah Informasi', 'informasi');
     }
 
     public function store(){
@@ -20,12 +22,14 @@ class Informasi extends CI_Controller {
             'deskripsi' => $this->input->post('deskripsi'),
             'tanggal' => $this->input->post('tanggal')
         ]);
+        $this->session->set_flashdata('success', 'Informasi berhasil dipublikasikan.');
         redirect('informasi');
     }
 
     public function edit($id){
         $data['informasi'] = $this->Informasi_model->getById($id);
-        $this->load->view('informasi/form', $data);
+        if (!$data['informasi']) show_404();
+        $this->render('informasi/form', $data, 'Edit Informasi', 'informasi');
     }
 
     public function update($id){
@@ -34,11 +38,13 @@ class Informasi extends CI_Controller {
             'deskripsi' => $this->input->post('deskripsi'),
             'tanggal' => $this->input->post('tanggal')
         ]);
+        $this->session->set_flashdata('success', 'Informasi berhasil diperbarui.');
         redirect('informasi');
     }
 
     public function delete($id){
         $this->Informasi_model->delete($id);
+        $this->session->set_flashdata('success', 'Informasi berhasil dihapus.');
         redirect('informasi');
     }
 }

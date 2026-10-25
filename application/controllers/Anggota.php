@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Anggota extends CI_Controller {
+class Anggota extends Admin_Controller {
 
     public function __construct(){
         parent::__construct();
         $this->load->model('Anggota_model');
-        if(!$this->session->userdata('logged_in')) redirect('login');
     }
 
     public function index() {
@@ -15,7 +14,7 @@ class Anggota extends CI_Controller {
 
     $data['anggota'] = $this->Anggota_model->get_filtered($search, $divisi);
     $data['divisi_list'] = $this->Anggota_model->get_divisi(); // untuk dropdown filter
-    $this->load->view('anggota/index', $data);
+    $this->render('anggota/index', $data, 'Anggota', 'anggota');
 }
 
     public function create() {
@@ -29,9 +28,10 @@ class Anggota extends CI_Controller {
                 'email'   => $this->input->post('email')
             ];
             $this->Anggota_model->insert($data);
+            $this->session->set_flashdata('success', 'Anggota berhasil ditambahkan.');
             redirect('anggota');
         }
-        $this->load->view('anggota/form');
+        $this->render('anggota/form', [], 'Tambah Anggota', 'anggota');
     }
 
     public function edit($id) {
@@ -45,14 +45,17 @@ class Anggota extends CI_Controller {
                 'email'   => $this->input->post('email')
             ];
             $this->Anggota_model->update($id, $data);
+            $this->session->set_flashdata('success', 'Data anggota berhasil diperbarui.');
             redirect('anggota');
         }
         $data['row'] = $this->Anggota_model->getById($id);
-        $this->load->view('anggota/form', $data);
+        if (!$data['row']) show_404();
+        $this->render('anggota/form', $data, 'Edit Anggota', 'anggota');
     }
 
     public function delete($id) {
         $this->Anggota_model->delete($id);
+        $this->session->set_flashdata('success', 'Anggota berhasil dihapus.');
         redirect('anggota');
     }
 }
