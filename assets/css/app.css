@@ -711,3 +711,44 @@ html, body { overflow-x: clip; }
 @keyframes pulse-glow { 0%, 100% { transform: scale(.92); opacity: .8; } 50% { transform: scale(1.08); opacity: 1; } }
 @media (max-width: 960px) { .hero-logo { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-logo img, .hero-logo .ring, .hero-logo .glow, .hero-logo .badge-float { animation: none !important; } }
+
+/* divisi: daftar tugas + contoh proker */
+.task-list { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; }
+.task-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 1rem; color: var(--ink); }
+.task-list li .icon { flex: none; width: 26px; height: 26px; padding: 5px; border-radius: 8px; background: var(--yellow); color: var(--navy-900); margin-top: 1px; }
+.pk-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; max-width: 980px; margin-inline: auto; }
+.pk-ex { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 26px; border-radius: 20px; background: var(--white); border: 1px solid var(--line); color: inherit; overflow: hidden; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s; }
+.pk-ex:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(15,23,42,.35); border-color: transparent; }
+.pk-ex h4 { font-size: 1.12rem; margin-bottom: 6px; color: var(--ink); }
+.pk-ex p { font-size: .92rem; color: var(--muted); line-height: 1.6; }
+.pk-ic { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--blue-50); color: var(--blue-600); transition: transform .4s; }
+.pk-ic .icon { width: 24px; height: 24px; }
+.pk-ex:hover .pk-ic { transform: rotate(-8deg) scale(1.08); }
+.pk-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: .85rem; font-weight: 700; color: var(--blue-600); }
+.pk-link .icon { width: 15px; height: 15px; transition: transform .25s; }
+.pk-ex:hover .pk-link .icon { transform: translateX(4px); }
+/* kartu dengan foto proker: foto jadi latar, teks putih */
+.pk-ex.has-img { min-height: 280px; justify-content: flex-end; border: 0; color: #fff; isolation: isolate; }
+.pk-ex.has-img > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.pk-ex.has-img::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(7,19,48,.95) 10%, rgba(7,19,48,.55) 55%, rgba(7,19,48,.15)); }
+.pk-ex.has-img:hover > img { transform: scale(1.07); }
+.pk-ex.has-img h4 { color: #fff; }
+.pk-ex.has-img p { color: #dbe4f3; }
+.pk-ex.has-img .pk-ic { background: var(--yellow); color: var(--navy-900); }
+.pk-ex.has-img .pk-link { color: var(--yellow); }
+
+/* kartu divisi di beranda: nama proker */
+.dtags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.dtags span { font-size: .72rem; font-weight: 700; padding: 4px 9px; border-radius: 999px; background: var(--blue-50); color: var(--blue-600); }
+
+/* staff intern: penjelasan divisi */
+.intern-about { display: grid; grid-template-columns: 1.6fr 1fr; gap: 28px; align-items: start; padding: 24px 26px; margin-bottom: 20px; border-radius: 20px; background: var(--white); border: 1px solid var(--line); }
+.ia-lead { color: var(--body); line-height: 1.7; }
+.ia-role { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: #fefce8; color: var(--ink); font-size: .93rem; line-height: 1.6; }
+.ia-role .icon { flex: none; width: 18px; height: 18px; color: #ca8a04; margin-top: 3px; }
+.ia-proker { display: flex; flex-direction: column; gap: 10px; }
+.ia-proker .ia-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.pk-chip { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--blue-50); color: var(--navy-900); font-weight: 700; font-size: .92rem; transition: transform .25s, background .25s; }
+.pk-chip .icon { width: 18px; height: 18px; color: var(--blue-600); }
+a.pk-chip:hover { transform: translateX(4px); background: #dbeafe; }
+@media (max-width: 760px) { .intern-about { grid-template-columns: 1fr; padding: 20px; } .pk-ex.has-img { min-height: 240px; } }

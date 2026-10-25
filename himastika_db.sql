@@ -185,10 +185,9 @@ CREATE TABLE `proker` (
 
 INSERT INTO `proker` (`id`, `judul`, `deskripsi`, `tanggal`, `status`, `foto`) VALUES
 (1, 'Studi Banding HIMASTIKA x HIMTI UBL', 'Wadah pengembangan wawasan akademik untuk menjalin hubungan baik dan kerja sama jangka panjang antar Himpunan Mahasiswa Teknik Informatika lintas kampus, serta meningkatkan wawasan tentang sistem organisasi dan inovasi program kerja. Gedung A, Ruang 811, Universitas Esa Unggul.', '2025-08-04', 1, 'assets/img/proker/studi-banding.jpg'),
-(2, 'Sinergi Teknologi', 'Belum mendapatkan mitra', '2025-08-14', 0, NULL),
-(3, 'Team Bonding', 'Kegiatan penguatan hubungan antar anggota HIMASTIKA untuk meningkatkan kerja sama dan sinergi dalam organisasi.', '2025-05-03', 1, NULL),
+(3, 'Team Bonding', 'Kegiatan penguatan hubungan antar anggota HIMASTIKA untuk meningkatkan kerja sama dan sinergi dalam organisasi.', '2025-05-03', 1, 'assets/img/proker/team-bonding.jpg'),
 (4, 'FASBER (Fasilkom Berbagi dan Berbuka Bersama)', 'Program kerja gabungan BEMF Ilmu Komputer, HIMASTIKA dan Himpunan Mahasiswa Jurusan Sistem Informasi yang rutin diadakan setiap Ramadan untuk berbuka dan berbagi bersama, sekaligus mempererat silaturahmi keluarga besar Fasilkom. Masjid Baitul Ghafur, Universitas Esa Unggul.', '2025-03-21', 1, 'assets/img/proker/fasber.jpg'),
-(5, 'Skill Up', 'Kegiatan berbagi pengalaman dan wawasan bersama pengurus HIMASTIKA dari periode sebelumnya, guna memberikan insight, inspirasi, serta pembelajaran berharga bagi pengurus dan anggota aktif dalam mengembangkan soft skill dan hard skill sebagai bekal menghadapi dunia organisasi maupun dunia kerja.', '2025-06-07', 1, NULL),
+(5, 'Skill Up', 'Kegiatan berbagi pengalaman dan wawasan bersama pengurus HIMASTIKA dari periode sebelumnya, guna memberikan insight, inspirasi, serta pembelajaran berharga bagi pengurus dan anggota aktif dalam mengembangkan soft skill dan hard skill sebagai bekal menghadapi dunia organisasi maupun dunia kerja.', '2025-06-07', 1, 'assets/img/proker/skill-up.jpg'),
 (6, 'Pengabdian Masyarakat: Sosial Kita', 'Bertema "Aksi Hima: Peduli dan Berbagi". Kegiatan di panti asuhan untuk menumbuhkan empati dan kontribusi nyata, sekaligus mengenalkan anak-anak pada pentingnya teknologi dalam pendidikan dan kehidupan sehari-hari. Panti Yauma Asrama Yatim dan Dhu\'afa Palmerah.', '2025-07-06', 1, 'assets/img/proker/pengabdian-masyarakat.jpg'),
 (7, 'Seminar HIMASTIKA x HUMANIS', 'Seminar gabungan HIMASTIKA dan HUMANIS bertema "Behind the Firewall: Ungkap Dunia Cyber dari Etika sampai Eksploitasi". Ruang 406, Gedung A, Universitas Esa Unggul.', '2025-06-23', 1, 'assets/img/proker/seminar-humanis.jpg'),
 (8, 'Company Visit', 'Kunjungan ke perusahaan untuk melihat langsung proses operasional dan manajerial yang berlangsung di dalamnya. Dilaksanakan di PT Jasa Raharja dan Kementerian Ketenagakerjaan (Kemnaker).', '2025-10-24', 1, 'assets/img/proker/company-visit-jasa-raharja.jpg'),
@@ -324,7 +323,9 @@ INSERT INTO `galeri` (`id`, `judul`, `foto`, `proker_id`) VALUES
 (10, 'Staff Intern Divisi Sinergi', 'assets/img/intern/grup-sinergi.jpg', NULL),
 (11, 'Staff Intern Divisi Inovasi dan Prestasi', 'assets/img/intern/grup-inovasi-dan-prestasi.jpg', NULL),
 (12, 'Staff Intern Divisi Kreativa dan Komunikasi', 'assets/img/intern/grup-kreativa-dan-komunikasi.jpg', NULL),
-(13, 'Badan Pengurus Harian', 'assets/img/divisi/bph.jpg', NULL);
+(13, 'Badan Pengurus Harian', 'assets/img/divisi/bph.jpg', NULL),
+(14, 'Skill Up HIMASTIKA', 'assets/img/proker/skill-up.jpg', 5),
+(15, 'Team Bonding Kabinet Sinergi Harmoni', 'assets/img/proker/team-bonding.jpg', 3);
 
 --
 -- Indexes for dumped tables
@@ -478,7 +479,7 @@ ALTER TABLE `intern`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 ALTER TABLE `galeri`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

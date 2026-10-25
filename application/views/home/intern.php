@@ -32,6 +32,28 @@ $grup = ['Sinergi' => 'assets/img/intern/grup-sinergi.jpg', 'Inovasi dan Prestas
           <h3><span class="stat-icon tone-yellow"><?= icon('users'); ?></span> <?= $slug ? 'Divisi ' : 'Intern '; ?><?= html_escape($divisi); ?></h3>
           <?php if ($slug): ?><a href="<?= base_url('divisi/' . $slug); ?>" class="btn btn-ghost btn-sm">Tentang divisi <?= icon('arrow-right'); ?></a><?php endif; ?>
         </div>
+        <?php $info = $divs[$slug ?: 'bph']; ?>
+        <div class="intern-about reveal">
+          <div>
+            <p class="eyebrow" style="margin-bottom:6px"><?= $slug ? 'Tentang divisi' : 'Tentang peran ini'; ?></p>
+            <p class="ia-lead"><?= html_escape($slug ? $info['deskripsi'] : 'Bendahara mengelola dan mencatat keuangan HIMASTIKA, menentukan anggaran kegiatan, serta melaporkan keuangan secara transparan.'); ?></p>
+            <?php if (!empty($info['intern'])): ?>
+              <p class="ia-role"><?= icon('sparkles'); ?> <span><b>Yang dikerjakan intern:</b> <?= html_escape($info['intern']); ?></span></p>
+            <?php endif; ?>
+          </div>
+          <?php if ($slug && !empty($info['proker'])): ?>
+            <div class="ia-proker">
+              <span class="ia-label">Contoh program kerja</span>
+              <?php foreach ($info['proker'] as $pk): $row = isset($pk['id'], $proker_db[$pk['id']]) ? $proker_db[$pk['id']] : null; ?>
+                <?php if ($row): ?>
+                  <a href="<?= base_url('program-kerja/' . $row->id); ?>" class="pk-chip"><?= icon($pk['icon'] ?? 'clipboard'); ?> <?= html_escape($pk['nama']); ?></a>
+                <?php else: ?>
+                  <span class="pk-chip"><?= icon($pk['icon'] ?? 'clipboard'); ?> <?= html_escape($pk['nama']); ?></span>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
+        </div>
         <?php if ($gp): ?>
           <a href="<?= $gp; ?>" class="group-photo reveal zoom" style="display:block" data-lightbox="intern" data-caption="Staff Intern <?= html_escape($divisi); ?>"><img src="<?= $gp; ?>" alt="Staff Intern <?= html_escape($divisi); ?>" loading="lazy"></a>
         <?php endif; ?>

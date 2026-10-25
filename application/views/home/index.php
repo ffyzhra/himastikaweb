@@ -57,7 +57,7 @@ $bph   = isset($per_divisi['bph']) ? $per_divisi['bph'] : [];
         <h2>Apa itu <span class="mark">Kabinet Sinergi Harmoni</span>?</h2>
         <p><?= html_escape($kab['deskripsi']); ?></p>
       </div>
-      <div class="div-photo" style="margin-bottom:22px"><img src="<?= base_url('assets/img/divisi/bph.jpg'); ?>" alt="Badan Pengurus Harian HIMASTIKA" loading="lazy" style="aspect-ratio:16/9"></div>
+      <a href="<?= base_url('assets/img/hero/kabinet.jpg'); ?>" class="div-photo" style="display:block;margin-bottom:22px" data-lightbox="tentang" data-caption="<?= html_escape($kab['nama'] . ' ' . $kab['periode']); ?>"><img src="<?= base_url('assets/img/hero/kabinet.jpg'); ?>" alt="Foto bersama <?= html_escape($kab['nama']); ?>" loading="lazy" style="aspect-ratio:16/9"></a>
       <a href="<?= base_url('pengurus'); ?>" class="btn btn-primary">Lihat struktur kabinet <?= icon('arrow-right'); ?></a>
     </div>
     <div class="values">
@@ -93,6 +93,9 @@ $bph   = isset($per_divisi['bph']) ? $per_divisi['bph'] : [];
           <div class="body">
             <h3><?= html_escape($dv['nama']); ?></h3>
             <p><?= html_escape($dv['ringkas']); ?></p>
+            <?php if (!empty($dv['proker']) && $slug !== 'bph'): ?>
+              <div class="dtags"><?php foreach ($dv['proker'] as $pk): ?><span><?= html_escape($pk['nama']); ?></span><?php endforeach; ?></div>
+            <?php endif; ?>
             <div class="more">
               <span class="faces">
                 <?php foreach (array_slice($members, 0, 5) as $m): if (foto_url($m->foto)): ?>

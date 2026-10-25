@@ -83,6 +83,7 @@ class Home extends CI_Controller {
             'anggota' => $per_divisi[$slug],
             'interns' => array_values($interns),
             'lainnya' => array_diff_key($all, [$slug => 1]),
+            'proker_db' => $this->proker_by_id(),
         ];
         $this->page('home/divisi', $data, 'Divisi ' . $div['nama'], 'divisi');
     }
@@ -115,7 +116,16 @@ class Home extends CI_Controller {
         foreach ($this->Intern_model->getAll() as $i) $grouped[$i->divisi][] = $i;
         $data['grouped'] = $grouped;
         $data['total']   = $this->Intern_model->countAll();
+        $data['divs']    = $this->config->item('divisi');
+        $data['proker_db'] = $this->proker_by_id();
         $this->page('home/intern', $data, 'Staff Intern', 'intern');
+    }
+
+    // Program kerja di database, di-index per id (untuk contoh proker di halaman divisi)
+    private function proker_by_id() {
+        $out = [];
+        foreach ($this->Proker_model->getAll() as $p) $out[(int) $p->id] = $p;
+        return $out;
     }
 
     public function galeri() {
