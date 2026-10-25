@@ -47,7 +47,7 @@ $divisi = $this->input->get('divisi') ?: 'all';
             <tr>
               <td>
                 <div class="person">
-                  <span class="avatar"><?= html_escape(initials($a->nama)); ?></span>
+                  <?php if (foto_url($a->foto)): ?><img class="thumb" src="<?= foto_url($a->foto); ?>" alt=""><?php else: ?><span class="avatar"><?= html_escape(initials($a->nama)); ?></span><?php endif; ?>
                   <div>
                     <b><?= html_escape($a->nama); ?></b>
                     <small>NIM <?= html_escape($a->nim); ?></small>

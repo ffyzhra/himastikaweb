@@ -5,6 +5,8 @@ $cards = [
     ['Anggota',       $totalAnggota,   'anggota',     'users',     'tone-blue'],
     ['Pendaftar',     $totalPendaftar, 'pendaftaran', 'user-plus', 'tone-yellow'],
     ['Program Kerja', $totalProker,    'proker',      'clipboard', 'tone-green'],
+    ['Staff Intern',  $totalIntern,    'intern',      'user',      'tone-purple'],
+    ['Dokumentasi',   $totalGaleri,    'dokumentasi', 'layers',    'tone-blue'],
     ['Informasi',     $totalInformasi, 'informasi',   'megaphone', 'tone-purple'],
     ['To-Do',         $totalTodo,      'todo',        'check-sq',  'tone-rose'],
 ];
@@ -26,7 +28,7 @@ $cards = [
   </div>
 </section>
 
-<section class="stats">
+<section class="stats auto">
   <?php foreach ($cards as $c): ?>
     <a href="<?= base_url($c[2]); ?>" class="card stat">
       <span class="stat-icon <?= $c[4]; ?>"><?= icon($c[3]); ?></span>

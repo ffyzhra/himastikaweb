@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard extends Admin_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->model(['Anggota_model','Todo_model','Pendaftaran_model','Proker_model','Informasi_model']);
+        $this->load->model(['Anggota_model','Todo_model','Pendaftaran_model','Proker_model','Informasi_model','Intern_model','Galeri_model']);
     }
 
     public function index() {
@@ -13,6 +13,8 @@ class Dashboard extends Admin_Controller {
         $data['totalPendaftar']  = $this->Pendaftaran_model->countAll();
         $data['totalProker']     = $this->Proker_model->countAll();
         $data['totalInformasi']  = $this->Informasi_model->countAll();
+        $data['totalIntern']     = $this->Intern_model->countAll();
+        $data['totalGaleri']     = $this->Galeri_model->countAll();
 
         $data['prokerSelesai']   = $this->db->where('status', 1)->count_all_results('proker');
         $data['pendingCount']    = $this->db->where('status', 'pending')->count_all_results('pendaftaran');

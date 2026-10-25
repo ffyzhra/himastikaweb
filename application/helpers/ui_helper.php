@@ -83,3 +83,34 @@ if (!function_exists('bulan_singkat')) {
         return $bulan[(int) date('n', strtotime($date)) - 1];
     }
 }
+
+if (!function_exists('foto_url')) {
+    /** URL of a stored photo path (assets/... or uploads/...), or null when missing. */
+    function foto_url($path) {
+        if (empty($path)) return null;
+        $path = ltrim($path, '/');
+        return is_file(FCPATH . $path) ? base_url($path) : null;
+    }
+}
+
+if (!function_exists('divisi_slug')) {
+    /** Slug of a division name as used in config/himastika.php, or null. */
+    function divisi_slug($nama) {
+        $CI =& get_instance();
+        foreach ($CI->config->item('divisi') as $slug => $d) {
+            if (strcasecmp(trim($d['nama']), trim((string) $nama)) === 0) return $slug;
+        }
+        return null;
+    }
+}
+
+if (!function_exists('nama_panggilan')) {
+    /** "Muhammad Febriyan Putrahariska" -> "Febriyan", "Fayza Azzahra" -> "Fayza" */
+    function nama_panggilan($nama) {
+        $parts = preg_split('/\s+/', trim((string) $nama));
+        if (count($parts) > 1 && in_array(strtolower(rtrim($parts[0], '.')), ['muhammad', 'm', 'siti', 'ade'], true)) {
+            return $parts[1];
+        }
+        return $parts[0];
+    }
+}

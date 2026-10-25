@@ -28,6 +28,9 @@ class Proker extends Admin_Controller {
             'tanggal' => $this->input->post('tanggal', TRUE) ?: null, // kosong = tanggal menyusul
             'status' => 0 // default belum selesai
         ];
+        $foto = $this->upload_foto('foto', 'proker');
+        if ($foto === false) redirect('proker/create');
+        if ($foto) $data['foto'] = $foto;
 
         if ($this->Proker_model->insert($data)) {
             $this->session->set_flashdata('success', 'Program kerja berhasil ditambahkan.');
@@ -48,11 +51,20 @@ class Proker extends Admin_Controller {
 
     // ✅ Update Data
     public function update($id) {
+        $proker = $this->Proker_model->getById($id);
+        if (!$proker) show_404();
+
         $data = [
             'judul' => $this->input->post('judul', TRUE),
             'deskripsi' => $this->input->post('deskripsi', TRUE),
             'tanggal' => $this->input->post('tanggal', TRUE) ?: null
         ];
+        $foto = $this->upload_foto('foto', 'proker');
+        if ($foto === false) redirect('proker/edit/' . $id);
+        if ($foto) {
+            $this->hapus_foto($proker->foto);
+            $data['foto'] = $foto;
+        }
 
         if ($this->Proker_model->update($id, $data)) {
             $this->session->set_flashdata('success', 'Program kerja berhasil diperbarui.');
@@ -74,7 +86,9 @@ class Proker extends Admin_Controller {
 
     // ✅ Hapus Data
     public function delete($id) {
-        if ($this->Proker_model->delete($id)) {
+        $proker = $this->Proker_model->getById($id);
+        if ($proker && $this->Proker_model->delete($id)) {
+            $this->hapus_foto($proker->foto);
             $this->session->set_flashdata('success', 'Program kerja berhasil dihapus.');
             redirect('proker');
         } else {

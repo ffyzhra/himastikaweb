@@ -33,10 +33,15 @@ $persen = $total ? round($selesai / $total * 100) : 0;
           <?php foreach ($prokers as $p): $done = (int) $p->status === 1; ?>
             <tr class="<?= $done ? 'done-row' : ''; ?>">
               <td>
-                <b class="title-cell" style="color:var(--ink)"><?= html_escape($p->judul); ?></b>
-                <?php if (!empty($p->deskripsi)): ?>
-                  <div class="cell-muted clamp"><?= html_escape($p->deskripsi); ?></div>
-                <?php endif; ?>
+                <div class="person">
+                  <?php if (foto_url($p->foto ?? null)): ?><img class="thumb-rect" src="<?= foto_url($p->foto); ?>" alt=""><?php else: ?><span class="thumb-rect" style="display:grid;place-items:center;background:var(--blue-50);color:var(--blue-600)"><?= icon('clipboard'); ?></span><?php endif; ?>
+                  <div>
+                    <b class="title-cell" style="color:var(--ink)"><?= html_escape($p->judul); ?></b>
+                    <?php if (!empty($p->deskripsi)): ?>
+                      <div class="cell-muted clamp"><?= html_escape($p->deskripsi); ?></div>
+                    <?php endif; ?>
+                  </div>
+                </div>
               </td>
               <td style="white-space:nowrap"><?= !empty($p->tanggal) ? tgl($p->tanggal) : '<span class="cell-muted">Menyusul</span>'; ?></td>
               <td>

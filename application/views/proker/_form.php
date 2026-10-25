@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="card-body">
-    <form action="<?= $edit ? base_url('proker/update/' . $proker->id) : base_url('proker/store'); ?>" method="post" class="form-grid">
+    <form action="<?= $edit ? base_url('proker/update/' . $proker->id) : base_url('proker/store'); ?>" method="post" enctype="multipart/form-data" class="form-grid">
       <div class="field">
         <label for="judul">Nama Program</label>
         <input class="input" type="text" id="judul" name="judul" placeholder="Contoh: Seminar Teknologi 2025" required
@@ -22,6 +22,22 @@
         <input class="input" type="date" id="tanggal" name="tanggal" value="<?= html_escape($edit ? (string) $proker->tanggal : ''); ?>">
         <span class="hint">Kosongkan jika tanggal belum ditentukan.</span>
       </div>
+      <div class="field">
+        <label>Foto sampul <span class="hint">(opsional, tampil di halaman program kerja)</span></label>
+        <div class="foto-field">
+          <?php if ($edit && foto_url($proker->foto ?? null)): ?>
+            <img class="preview wide" src="<?= foto_url($proker->foto); ?>" alt="Foto saat ini">
+          <?php else: ?>
+            <span class="preview wide"><?= icon('upload'); ?></span>
+          <?php endif; ?>
+          <label class="file-drop">
+            <?= icon('upload'); ?>
+            <div><strong><?= $edit && !empty($proker->foto) ? 'Ganti foto' : 'Unggah foto'; ?></strong><span>JPG/PNG maks. 4 MB</span></div>
+            <input type="file" name="foto" accept=".jpg,.jpeg,.png,.webp">
+          </label>
+        </div>
+      </div>
+
       <div class="form-actions">
         <a href="<?= base_url('proker'); ?>" class="btn btn-ghost"><?= icon('arrow-left'); ?> Kembali</a>
         <button type="submit" class="btn btn-primary"><?= icon('check'); ?> <?= $edit ? 'Simpan Perubahan' : 'Tambah Program'; ?></button>

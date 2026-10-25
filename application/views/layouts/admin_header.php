@@ -6,6 +6,8 @@ $menu = [
     ['pendaftaran', 'Pendaftar',     'user-plus'],
     ['proker',      'Program Kerja', 'clipboard'],
     ['informasi',   'Informasi',     'megaphone'],
+    ['intern',      'Staff Intern',  'user'],
+    ['dokumentasi', 'Dokumentasi',   'layers'],
     ['todo',        'To-Do List',    'check-sq'],
 ];
 ?><!DOCTYPE html>

@@ -51,6 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['daftar'] = 'pendaftaran/form';
+$route['pengurus'] = 'home/pengurus';
+$route['divisi/(:any)'] = 'home/divisi/$1';
+$route['program-kerja'] = 'home/proker_list';
+$route['program-kerja/(:num)'] = 'home/proker_detail/$1';
+$route['staff-intern'] = 'home/intern';
+$route['galeri'] = 'home/galeri';
 $route['admin'] = 'login';
 $route['dashboard'] = 'dashboard/index';
 $route['anggota'] = 'anggota/index';

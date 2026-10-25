@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="card-body">
-    <form action="<?= $edit ? base_url('anggota/edit/' . $row->id) : base_url('anggota/create'); ?>" method="post" class="form-grid">
+    <form action="<?= $edit ? base_url('anggota/edit/' . $row->id) : base_url('anggota/create'); ?>" method="post" enctype="multipart/form-data" class="form-grid">
       <div class="field">
         <label for="nama">Nama Lengkap</label>
         <input class="input" type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required
@@ -49,6 +49,22 @@
         <label for="email">Email <span class="hint">(opsional)</span></label>
         <input class="input" type="email" id="email" name="email" placeholder="Opsional"
                value="<?= html_escape($edit ? $row->email : set_value('email')); ?>">
+      </div>
+
+      <div class="field">
+        <label>Foto <span class="hint">(opsional, JPG/PNG maks. 4 MB, sebaiknya potret 3:4)</span></label>
+        <div class="foto-field">
+          <?php if ($edit && foto_url($row->foto)): ?>
+            <img class="preview" src="<?= foto_url($row->foto); ?>" alt="Foto saat ini">
+          <?php else: ?>
+            <span class="preview"><?= icon('user'); ?></span>
+          <?php endif; ?>
+          <label class="file-drop">
+            <?= icon('upload'); ?>
+            <div><strong><?= $edit && !empty($row->foto) ? 'Ganti foto' : 'Unggah foto'; ?></strong><span>Klik untuk memilih file</span></div>
+            <input type="file" name="foto" accept=".jpg,.jpeg,.png,.webp">
+          </label>
+        </div>
       </div>
 
       <div class="form-actions">

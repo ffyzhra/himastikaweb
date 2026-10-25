@@ -34,7 +34,8 @@ CREATE TABLE `anggota` (
   `jabatan` varchar(50) DEFAULT NULL,
   `divisi` varchar(50) DEFAULT NULL,
   `no_telp` varchar(15) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL
+  `email` varchar(100) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -42,29 +43,28 @@ CREATE TABLE `anggota` (
 -- Pengurus HIMASTIKA Kabinet Sinergi Harmoni 2024/2025 (tanpa nomor telepon)
 --
 
-INSERT INTO `anggota` (`id`, `nama`, `nim`, `jabatan`, `divisi`, `no_telp`, `email`) VALUES
-(1, 'Fayza Azzahra', '20230801329', 'Ketua', 'Badan Pengurus Harian', NULL, NULL),
-(2, 'Baity Jannaty', '20230801434', 'Wakil Ketua', 'Badan Pengurus Harian', NULL, NULL),
-(3, 'Syabina Awilya', '20230801184', 'Sekretaris I', 'Badan Pengurus Harian', NULL, NULL),
-(4, 'Adrian Syahfidi', '20230801326', 'Sekretaris II', 'Badan Pengurus Harian', NULL, NULL),
-(5, 'Jocelyn Meilandri', '20230801026', 'Bendahara I', 'Badan Pengurus Harian', NULL, NULL),
-(6, 'Oscar Adi Dharma', '20230801056', 'Koordinator', 'Sinergi', NULL, NULL),
-(7, 'Gilang Faqih', '20230801227', 'Anggota', 'Sinergi', NULL, NULL),
-(8, 'Ananda Rafly Saputra', '20230801296', 'PIC', 'Dukungan dan Solidaritas', NULL, NULL),
-(9, 'Dominggus Louk', '20230801125', 'Anggota', 'Dukungan dan Solidaritas', NULL, NULL),
-(10, 'Rasyid Septian Pasaribu', '20230801344', 'Anggota', 'Dukungan dan Solidaritas', NULL, NULL),
-(11, 'Adidya Darmawan', '20230801110', 'Koordinator', 'Inovasi dan Prestasi', NULL, NULL),
-(12, 'Hizki Putra Permana', '20230801179', 'Anggota', 'Inovasi dan Prestasi', NULL, NULL),
-(13, 'Muhammad Febriyan Putrahariska', '20230801043', 'Anggota', 'Inovasi dan Prestasi', NULL, NULL),
-(14, 'Rahmat Tri Anggoro', '20230801446', 'PIC', 'Kajian Strategis', NULL, NULL),
-(15, 'Ade Husnan Mussani', '20230801173', 'Anggota', 'Kajian Strategis', NULL, NULL),
-(16, 'Ari Hendriatno', '20230801114', 'Koordinator', 'Kreativa dan Komunikasi', NULL, NULL),
-(17, 'Firschanya Alula Rietmadhanty', '20230801438', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL),
-(18, 'Gylian Hehanussa', '20230801260', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL),
-(19, 'Siti Nurfadila Ilham', '20230801309', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL),
-(20, 'Naufal Mussyafa Arrada', '20230801306', 'Koordinator', 'Relasi dan Kemitraan', NULL, NULL),
-(21, 'Fahmi Nurwendo', '20230801250', 'Anggota', 'Relasi dan Kemitraan', NULL, NULL),
-(22, 'Rajih Asyam Driagrian', '20230801099', 'Anggota', 'Relasi dan Kemitraan', NULL, NULL);
+INSERT INTO `anggota` (`id`, `nama`, `nim`, `jabatan`, `divisi`, `no_telp`, `email`, `foto`) VALUES
+(1, 'Fayza Azzahra', '20230801329', 'Ketua', 'Badan Pengurus Harian', NULL, NULL, 'assets/img/anggota/fayza.jpg'),
+(2, 'Baity Jannaty', '20230801434', 'Wakil Ketua', 'Badan Pengurus Harian', NULL, NULL, 'assets/img/anggota/baity.jpg'),
+(3, 'Syabina Awilya', '20230801184', 'Sekretaris I', 'Badan Pengurus Harian', NULL, NULL, 'assets/img/anggota/syabina.jpg'),
+(4, 'Adrian Syahfidi', '20230801326', 'Sekretaris II', 'Badan Pengurus Harian', NULL, NULL, 'assets/img/anggota/adrian.jpg'),
+(5, 'Jocelyn Meilandri', '20230801026', 'Bendahara I', 'Badan Pengurus Harian', NULL, NULL, 'assets/img/anggota/jocelyn.jpg'),
+(7, 'Gilang Faqih', '20230801227', 'Anggota', 'Sinergi', NULL, NULL, 'assets/img/anggota/gilang.jpg'),
+(8, 'Ananda Rafly Saputra', '20230801296', 'PIC', 'Dukungan dan Solidaritas', NULL, NULL, 'assets/img/anggota/rafly.jpg'),
+(9, 'Dominggus Louk', '20230801125', 'Anggota', 'Dukungan dan Solidaritas', NULL, NULL, 'assets/img/anggota/dominggus.jpg'),
+(10, 'Rasyid Septian Pasaribu', '20230801344', 'Anggota', 'Dukungan dan Solidaritas', NULL, NULL, 'assets/img/anggota/rasyid.jpg'),
+(11, 'Adidya Darmawan', '20230801110', 'Koordinator', 'Inovasi dan Prestasi', NULL, NULL, 'assets/img/anggota/adidya.jpg'),
+(12, 'Hizki Putra Permana', '20230801179', 'Anggota', 'Inovasi dan Prestasi', NULL, NULL, 'assets/img/anggota/hizki.jpg'),
+(13, 'Muhammad Febriyan Putrahariska', '20230801043', 'Anggota', 'Inovasi dan Prestasi', NULL, NULL, 'assets/img/anggota/febriyan.jpg'),
+(14, 'Rahmat Tri Anggoro', '20230801446', 'PIC', 'Kajian Strategis', NULL, NULL, 'assets/img/anggota/rahmat.jpg'),
+(15, 'Ade Husnan Mussani', '20230801173', 'Anggota', 'Kajian Strategis', NULL, NULL, 'assets/img/anggota/husnan.jpg'),
+(16, 'Ari Hendriatno', '20230801114', 'Koordinator', 'Kreativa dan Komunikasi', NULL, NULL, 'assets/img/anggota/ari.jpg'),
+(17, 'Firschanya Alula Rietmadhanty', '20230801438', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL, 'assets/img/anggota/firschanya.jpg'),
+(18, 'Gylian Hehanussa', '20230801260', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL, 'assets/img/anggota/gylian.jpg'),
+(19, 'Siti Nurfadila Ilham', '20230801309', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL, 'assets/img/anggota/dila.jpg'),
+(20, 'Naufal Mussyafa Arrada', '20230801306', 'Koordinator', 'Relasi dan Kemitraan', NULL, NULL, 'assets/img/anggota/naufal.jpg'),
+(21, 'Fahmi Nurwendo', '20230801250', 'Anggota', 'Relasi dan Kemitraan', NULL, NULL, 'assets/img/anggota/fahmi.jpg'),
+(22, 'Rajih Asyam Driagrian', '20230801099', 'Anggota', 'Relasi dan Kemitraan', NULL, NULL, 'assets/img/anggota/rajih.jpg');
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,8 @@ CREATE TABLE `proker` (
   `judul` varchar(255) NOT NULL,
   `deskripsi` text DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 0
+  `status` tinyint(1) DEFAULT 0,
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -182,16 +183,16 @@ CREATE TABLE `proker` (
 -- (Program kerja Kabinet Sinergi Harmoni 2024/2025, sesuai Profile HIMASTIKA)
 --
 
-INSERT INTO `proker` (`id`, `judul`, `deskripsi`, `tanggal`, `status`) VALUES
-(1, 'Studi Banding HIMASTIKA x HIMTI UBL', 'Wadah pengembangan wawasan akademik untuk menjalin hubungan baik dan kerja sama jangka panjang antar Himpunan Mahasiswa Teknik Informatika lintas kampus, serta meningkatkan wawasan tentang sistem organisasi dan inovasi program kerja. Gedung A, Ruang 811, Universitas Esa Unggul.', '2025-08-04', 1),
-(2, 'Sinergi Teknologi', 'Belum mendapatkan mitra', '2025-08-14', 0),
-(3, 'Team Bonding', 'Kegiatan penguatan hubungan antar anggota HIMASTIKA untuk meningkatkan kerja sama dan sinergi dalam organisasi.', '2025-05-03', 1),
-(4, 'FASBER (Fasilkom Berbagi dan Berbuka Bersama)', 'Program kerja gabungan BEMF Ilmu Komputer, HIMASTIKA dan Himpunan Mahasiswa Jurusan Sistem Informasi yang rutin diadakan setiap Ramadan untuk berbuka dan berbagi bersama, sekaligus mempererat silaturahmi keluarga besar Fasilkom. Masjid Baitul Ghafur, Universitas Esa Unggul.', '2025-03-21', 1),
-(5, 'Skill Up', 'Kegiatan berbagi pengalaman dan wawasan bersama pengurus HIMASTIKA dari periode sebelumnya, guna memberikan insight, inspirasi, serta pembelajaran berharga bagi pengurus dan anggota aktif dalam mengembangkan soft skill dan hard skill sebagai bekal menghadapi dunia organisasi maupun dunia kerja.', '2025-06-07', 1),
-(6, 'Pengabdian Masyarakat: Sosial Kita', 'Bertema "Aksi Hima: Peduli dan Berbagi". Kegiatan di panti asuhan untuk menumbuhkan empati dan kontribusi nyata, sekaligus mengenalkan anak-anak pada pentingnya teknologi dalam pendidikan dan kehidupan sehari-hari. Panti Yauma Asrama Yatim dan Dhu\'afa Palmerah.', '2025-07-06', 1),
-(7, 'Seminar HIMASTIKA x HUMANIS', 'Seminar gabungan HIMASTIKA dan HUMANIS bertema "Behind the Firewall: Ungkap Dunia Cyber dari Etika sampai Eksploitasi". Ruang 406, Gedung A, Universitas Esa Unggul.', '2025-06-23', 1),
-(8, 'Company Visit', 'Kunjungan ke perusahaan untuk melihat langsung proses operasional dan manajerial yang berlangsung di dalamnya. Dilaksanakan di PT Jasa Raharja dan Kementerian Ketenagakerjaan (Kemnaker).', '2025-10-24', 1),
-(9, 'FASTHER (Fasilkom Gathering)', 'Kegiatan tahunan Fasilkom untuk mempererat tali persaudaraan dan solidaritas keluarga besar Fakultas Ilmu Komputer. Acara gabungan HIMASTIKA dan HUMANIS. Segera hadir.', NULL, 0);
+INSERT INTO `proker` (`id`, `judul`, `deskripsi`, `tanggal`, `status`, `foto`) VALUES
+(1, 'Studi Banding HIMASTIKA x HIMTI UBL', 'Wadah pengembangan wawasan akademik untuk menjalin hubungan baik dan kerja sama jangka panjang antar Himpunan Mahasiswa Teknik Informatika lintas kampus, serta meningkatkan wawasan tentang sistem organisasi dan inovasi program kerja. Gedung A, Ruang 811, Universitas Esa Unggul.', '2025-08-04', 1, 'assets/img/proker/studi-banding.jpg'),
+(2, 'Sinergi Teknologi', 'Belum mendapatkan mitra', '2025-08-14', 0, NULL),
+(3, 'Team Bonding', 'Kegiatan penguatan hubungan antar anggota HIMASTIKA untuk meningkatkan kerja sama dan sinergi dalam organisasi.', '2025-05-03', 1, NULL),
+(4, 'FASBER (Fasilkom Berbagi dan Berbuka Bersama)', 'Program kerja gabungan BEMF Ilmu Komputer, HIMASTIKA dan Himpunan Mahasiswa Jurusan Sistem Informasi yang rutin diadakan setiap Ramadan untuk berbuka dan berbagi bersama, sekaligus mempererat silaturahmi keluarga besar Fasilkom. Masjid Baitul Ghafur, Universitas Esa Unggul.', '2025-03-21', 1, 'assets/img/proker/fasber.jpg'),
+(5, 'Skill Up', 'Kegiatan berbagi pengalaman dan wawasan bersama pengurus HIMASTIKA dari periode sebelumnya, guna memberikan insight, inspirasi, serta pembelajaran berharga bagi pengurus dan anggota aktif dalam mengembangkan soft skill dan hard skill sebagai bekal menghadapi dunia organisasi maupun dunia kerja.', '2025-06-07', 1, NULL),
+(6, 'Pengabdian Masyarakat: Sosial Kita', 'Bertema "Aksi Hima: Peduli dan Berbagi". Kegiatan di panti asuhan untuk menumbuhkan empati dan kontribusi nyata, sekaligus mengenalkan anak-anak pada pentingnya teknologi dalam pendidikan dan kehidupan sehari-hari. Panti Yauma Asrama Yatim dan Dhu\'afa Palmerah.', '2025-07-06', 1, 'assets/img/proker/pengabdian-masyarakat.jpg'),
+(7, 'Seminar HIMASTIKA x HUMANIS', 'Seminar gabungan HIMASTIKA dan HUMANIS bertema "Behind the Firewall: Ungkap Dunia Cyber dari Etika sampai Eksploitasi". Ruang 406, Gedung A, Universitas Esa Unggul.', '2025-06-23', 1, 'assets/img/proker/seminar-humanis.jpg'),
+(8, 'Company Visit', 'Kunjungan ke perusahaan untuk melihat langsung proses operasional dan manajerial yang berlangsung di dalamnya. Dilaksanakan di PT Jasa Raharja dan Kementerian Ketenagakerjaan (Kemnaker).', '2025-10-24', 1, 'assets/img/proker/company-visit-jasa-raharja.jpg'),
+(9, 'FASTHER (Fasilkom Gathering)', 'Kegiatan tahunan Fasilkom untuk mempererat tali persaudaraan dan solidaritas keluarga besar Fakultas Ilmu Komputer. Acara gabungan HIMASTIKA dan HUMANIS. Segera hadir.', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -269,6 +270,62 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
 (1, 'admin', '0192023a7bbd73250516f069df18b500', 'admin');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `intern`
+-- (Staff Intern: anggota baru yang bergabung di pertengahan periode)
+--
+
+CREATE TABLE `intern` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `divisi` varchar(50) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `intern` (`id`, `nama`, `divisi`, `foto`) VALUES
+(1, 'Ananta Putra B.', 'Sinergi', 'assets/img/intern/ananta.jpg'),
+(2, 'M. Sayyid D.F.', 'Sinergi', 'assets/img/intern/syaid.jpg'),
+(3, 'Syauqi Rifki F.', 'Sinergi', 'assets/img/intern/syauqi.jpg'),
+(4, 'Tomy Manurung', 'Sinergi', 'assets/img/intern/tomi.jpg'),
+(5, 'Rivaldo Pigai', 'Inovasi dan Prestasi', 'assets/img/intern/rivaldo.jpg'),
+(6, 'Rafli Heryana', 'Inovasi dan Prestasi', 'assets/img/intern/rafli.jpg'),
+(7, 'Rafi', 'Kreativa dan Komunikasi', 'assets/img/intern/rafi.jpg'),
+(8, 'Baim', 'Kreativa dan Komunikasi', 'assets/img/intern/baim.jpg'),
+(9, 'Robi', 'Kreativa dan Komunikasi', 'assets/img/intern/robi.jpg'),
+(10, 'Irfan', 'Kreativa dan Komunikasi', 'assets/img/intern/irfan.jpg'),
+(11, 'Dilan Fajar Rafael', 'Bendahara', 'assets/img/intern/dilan.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galeri`
+--
+
+CREATE TABLE `galeri` (
+  `id` int(11) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `proker_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `galeri` (`id`, `judul`, `foto`, `proker_id`) VALUES
+(1, 'Pelantikan Staff Intern', 'assets/img/intern/pelantikan.jpg', NULL),
+(2, 'Kabinet Sinergi Harmoni', 'assets/img/hero/kabinet.jpg', NULL),
+(3, 'Company Visit PT Jasa Raharja', 'assets/img/proker/company-visit-jasa-raharja.jpg', 8),
+(4, 'Company Visit Kemnaker', 'assets/img/proker/company-visit-kemnaker.jpg', 8),
+(5, 'Studi Banding HIMASTIKA x HIMTI UBL', 'assets/img/proker/studi-banding.jpg', 1),
+(6, 'Pengabdian Masyarakat: Sosial Kita', 'assets/img/proker/pengabdian-masyarakat.jpg', 6),
+(7, 'Seminar HIMASTIKA x HUMANIS', 'assets/img/proker/seminar-humanis.jpg', 7),
+(8, 'FASBER 2025', 'assets/img/proker/fasber.jpg', 4),
+(9, 'Kebersamaan Pengurus', 'assets/img/proker/kebersamaan.jpg', NULL),
+(10, 'Staff Intern Divisi Sinergi', 'assets/img/intern/grup-sinergi.jpg', NULL),
+(11, 'Staff Intern Divisi Inovasi dan Prestasi', 'assets/img/intern/grup-inovasi-dan-prestasi.jpg', NULL),
+(12, 'Staff Intern Divisi Kreativa dan Komunikasi', 'assets/img/intern/grup-kreativa-dan-komunikasi.jpg', NULL),
+(13, 'Badan Pengurus Harian', 'assets/img/divisi/bph.jpg', NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -341,6 +398,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
+ALTER TABLE `intern`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `galeri`
+  ADD PRIMARY KEY (`id`);
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -410,6 +473,12 @@ ALTER TABLE `todo_list`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+ALTER TABLE `intern`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+ALTER TABLE `galeri`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

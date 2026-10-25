@@ -21,6 +21,38 @@ class Admin_Controller extends CI_Controller {
     }
 
     /**
+     * Save an uploaded photo from <input type="file" name="$field"> into uploads/$folder/.
+     * Returns the stored path (e.g. "uploads/anggota/ab12.jpg"), null when no file was
+     * chosen, or false when the upload failed (an error flash message is set).
+     */
+    protected function upload_foto($field, $folder) {
+        if (empty($_FILES[$field]['name'])) return null;
+
+        $dir = './uploads/' . $folder . '/';
+        if (!is_dir($dir)) mkdir($dir, 0755, true);
+
+        $this->load->library('upload');
+        $this->upload->initialize([
+            'upload_path'   => $dir,
+            'allowed_types' => 'jpg|jpeg|png|webp',
+            'max_size'      => 4096,
+            'encrypt_name'  => true,
+        ]);
+        if (!$this->upload->do_upload($field)) {
+            $this->session->set_flashdata('error', 'Foto gagal diunggah: ' . strip_tags($this->upload->display_errors()));
+            return false;
+        }
+        return 'uploads/' . $folder . '/' . $this->upload->data('file_name');
+    }
+
+    /** Delete a previously uploaded photo (never touches the bundled assets/ photos). */
+    protected function hapus_foto($path) {
+        if (!empty($path) && strpos($path, 'uploads/') === 0 && is_file(FCPATH . $path)) {
+            @unlink(FCPATH . $path);
+        }
+    }
+
+    /**
      * Render a view inside the admin layout.
      *
      * @param string $view   view path, e.g. 'anggota/index'
