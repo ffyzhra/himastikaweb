@@ -23,7 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/himastika/';
+// Detected from the request so the same code runs on Laragon (http://himastika.test/),
+// XAMPP (http://localhost/himastika/) and shared hosting. On a live server you can
+// replace this with the fixed URL, e.g. 'https://himastika.example.com/'.
+$config['base_url'] = (
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http'
+) . '://' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost')
+  . rtrim(str_replace('\\', '/', dirname(isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '/')), '/') . '/';
 
 /*
 |--------------------------------------------------------------------------

@@ -60,7 +60,7 @@ himastika_db.sql   # database schema + dummy seed data
 
 **Demo login (local only):** `admin` / `admin123`. Change it right after installing.
 
-> All member and registration data in `himastika_db.sql` is dummy data.
+> `himastika_db.sql` contains the 2024/2025 board (Kabinet Sinergi Harmoni) with names, NIM, position and division only, **no phone numbers or emails**. Registration rows are dummy data.
 
 ## Author
 

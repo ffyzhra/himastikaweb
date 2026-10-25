@@ -35,19 +35,19 @@
           <datalist id="divisi-list">
             <option value="Badan Pengurus Harian"><option value="Sinergi"><option value="Dukungan dan Solidaritas">
             <option value="Kajian Strategis"><option value="Inovasi dan Prestasi"><option value="Kreativa dan Komunikasi">
-            <option value="Kemitraan dan Relasi">
+            <option value="Relasi dan Kemitraan">
           </datalist>
         </div>
         <div class="field">
-          <label for="no_telp">No. Telepon</label>
-          <input class="input" type="tel" id="no_telp" name="no_telp" placeholder="08xxxxxxxxxx" required
+          <label for="no_telp">No. Telepon <span class="hint">(opsional)</span></label>
+          <input class="input" type="tel" id="no_telp" name="no_telp" placeholder="Opsional"
                  value="<?= html_escape($edit ? $row->no_telp : set_value('no_telp')); ?>">
         </div>
       </div>
 
       <div class="field">
-        <label for="email">Email</label>
-        <input class="input" type="email" id="email" name="email" placeholder="nama@email.com" required
+        <label for="email">Email <span class="hint">(opsional)</span></label>
+        <input class="input" type="email" id="email" name="email" placeholder="Opsional"
                value="<?= html_escape($edit ? $row->email : set_value('email')); ?>">
       </div>
 

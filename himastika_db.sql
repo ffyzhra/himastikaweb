@@ -39,29 +39,32 @@ CREATE TABLE `anggota` (
 
 --
 -- Dumping data for table `anggota`
+-- Pengurus HIMASTIKA Kabinet Sinergi Harmoni 2024/2025 (tanpa nomor telepon)
 --
 
 INSERT INTO `anggota` (`id`, `nama`, `nim`, `jabatan`, `divisi`, `no_telp`, `email`) VALUES
-(2, 'Andi Pratama', '20230801000', 'Sekretaris 2', 'Badan Pengurus Harian', '081200000000', 'andi0@example.com'),
-(3, 'Budi Santoso', '20230801001', 'Bendahara', 'Badan Pengurus Harian', '081200000001', 'budi1@example.com'),
-(4, 'Citra Lestari', '20230801002', 'Sekretaris 1', 'Badan Pengurus Harian', '081200000002', 'citra2@example.com'),
-(5, 'Dewi Wijaya', '20230801003', 'Koordinator', 'Sinergi', '081200000003', 'dewi3@example.com'),
-(6, 'Eka Saputra', '20230801004', 'Staff', 'Sinergi', '081200000004', 'eka4@example.com'),
-(7, 'Fajar Kusuma', '20230801005', 'PIC', 'Dukungan dan Solidaritas', '081200000005', 'fajar5@example.com'),
-(8, 'Gita Anggraini', '20230801006', 'Staff', 'Dukungan dan Solidaritas', '081200000006', 'gita6@example.com'),
-(9, 'Hana Nugroho', '20230801007', 'Staff', 'Dukungan dan Solidaritas', '081200000007', 'hana7@example.com'),
-(10, 'Indra Permata', '20230801008', 'Koordinator', 'Inovasi dan Prestasi', '081200000008', 'indra8@example.com'),
-(11, 'Joko Hidayat', '20230801009', 'Staff', 'Inovasi dan Prestasi', '081200000009', 'joko9@example.com'),
-(12, 'Kirana Pratama', '20230801010', 'Staff', 'Inovasi dan Prestasi', '081200000010', 'kirana10@example.com'),
-(13, 'Laras Santoso', '20230801011', 'PIC', 'Kajian Strategis', '081200000011', 'laras11@example.com'),
-(14, 'Maya Lestari', '20230801012', 'Staff', 'Kajian Strategis', '081200000012', 'maya12@example.com'),
-(15, 'Nanda Wijaya', '20230801013', 'Koordinator', 'Kreativa dan Komunikasi', '081200000013', 'nanda13@example.com'),
-(16, 'Oka Saputra', '20230801014', 'Staff', 'Kreativa dan Komunikasi', '081200000014', 'oka14@example.com'),
-(17, 'Putri Kusuma', '20230801015', 'Staff', 'Kreativa dan Komunikasi', '081200000015', 'putri15@example.com'),
-(18, 'Raka Anggraini', '20230801016', 'Staff', 'Kreativa dan Komunikasi', '081200000016', 'raka16@example.com'),
-(19, 'Sari Nugroho', '20230801017', 'Koordinator', 'Kemitraan dan Relasi ', '081200000017', 'sari17@example.com'),
-(20, 'Tono Permata', '20230801018', 'Staff', 'Kemitraan dan Relasi ', '081200000018', 'tono18@example.com'),
-(21, 'Umi Hidayat', '20230801019', 'Staff', 'Kemitraan dan Relasi ', '081200000019', 'umi19@example.com');
+(1, 'Fayza Azzahra', '20230801329', 'Ketua', 'Badan Pengurus Harian', NULL, NULL),
+(2, 'Baity Jannaty', '20230801434', 'Wakil Ketua', 'Badan Pengurus Harian', NULL, NULL),
+(3, 'Syabina Awilya', '20230801184', 'Sekretaris I', 'Badan Pengurus Harian', NULL, NULL),
+(4, 'Adrian Syahfidi', '20230801326', 'Sekretaris II', 'Badan Pengurus Harian', NULL, NULL),
+(5, 'Jocelyn Meilandri', '20230801026', 'Bendahara I', 'Badan Pengurus Harian', NULL, NULL),
+(6, 'Oscar Adi Dharma', '20230801056', 'Koordinator', 'Sinergi', NULL, NULL),
+(7, 'Gilang Faqih', '20230801227', 'Anggota', 'Sinergi', NULL, NULL),
+(8, 'Ananda Rafly Saputra', '20230801296', 'PIC', 'Dukungan dan Solidaritas', NULL, NULL),
+(9, 'Dominggus Louk', '20230801125', 'Anggota', 'Dukungan dan Solidaritas', NULL, NULL),
+(10, 'Rasyid Septian Pasaribu', '20230801344', 'Anggota', 'Dukungan dan Solidaritas', NULL, NULL),
+(11, 'Adidya Darmawan', '20230801110', 'Koordinator', 'Inovasi dan Prestasi', NULL, NULL),
+(12, 'Hizki Putra Permana', '20230801179', 'Anggota', 'Inovasi dan Prestasi', NULL, NULL),
+(13, 'Muhammad Febriyan Putrahariska', '20230801043', 'Anggota', 'Inovasi dan Prestasi', NULL, NULL),
+(14, 'Rahmat Tri Anggoro', '20230801446', 'PIC', 'Kajian Strategis', NULL, NULL),
+(15, 'Ade Husnan Mussani', '20230801173', 'Anggota', 'Kajian Strategis', NULL, NULL),
+(16, 'Ari Hendriatno', '20230801114', 'Koordinator', 'Kreativa dan Komunikasi', NULL, NULL),
+(17, 'Firschanya Alula Rietmadhanty', '20230801438', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL),
+(18, 'Gylian Hehanussa', '20230801260', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL),
+(19, 'Siti Nurfadila Ilham', '20230801309', 'Anggota', 'Kreativa dan Komunikasi', NULL, NULL),
+(20, 'Naufal Mussyafa Arrada', '20230801306', 'Koordinator', 'Relasi dan Kemitraan', NULL, NULL),
+(21, 'Fahmi Nurwendo', '20230801250', 'Anggota', 'Relasi dan Kemitraan', NULL, NULL),
+(22, 'Rajih Asyam Driagrian', '20230801099', 'Anggota', 'Relasi dan Kemitraan', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -170,22 +173,25 @@ CREATE TABLE `proker` (
   `id` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
   `deskripsi` text DEFAULT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal` date DEFAULT NULL,
   `status` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `proker`
+-- (Program kerja Kabinet Sinergi Harmoni 2024/2025, sesuai Profile HIMASTIKA)
 --
 
 INSERT INTO `proker` (`id`, `judul`, `deskripsi`, `tanggal`, `status`) VALUES
-(1, 'Studi Banding', 'HIMASTIKA X HIMTI UBL', '2025-08-04', 0),
+(1, 'Studi Banding HIMASTIKA x HIMTI UBL', 'Wadah pengembangan wawasan akademik untuk menjalin hubungan baik dan kerja sama jangka panjang antar Himpunan Mahasiswa Teknik Informatika lintas kampus, serta meningkatkan wawasan tentang sistem organisasi dan inovasi program kerja. Gedung A, Ruang 811, Universitas Esa Unggul.', '2025-08-04', 1),
 (2, 'Sinergi Teknologi', 'Belum mendapatkan mitra', '2025-08-14', 0),
 (3, 'Team Bonding', 'Kegiatan penguatan hubungan antar anggota HIMASTIKA untuk meningkatkan kerja sama dan sinergi dalam organisasi.', '2025-05-03', 1),
-(4, 'Fasilkom Berbagi', 'Program kerja gabungan antara BEMF, HIMASTIKA, dan HUMANIS yang diselenggarakan selama bulan Ramadan dalam bentuk kegiatan sosial dan buka puasa bersama. FASBER menjadi wadah untuk berbagi kepada masyarakat sekitar sekaligus mempererat kebersamaan antar civitas akademika Fasilkom. Melalui kegiatan ini, nilai empati, solidaritas, dan kepedulian sosial ditanamkan sebagai wujud nyata kontribusi mahasiswa terhadap lingkungan sekitar.', '2025-05-23', 1),
+(4, 'FASBER (Fasilkom Berbagi dan Berbuka Bersama)', 'Program kerja gabungan BEMF Ilmu Komputer, HIMASTIKA dan Himpunan Mahasiswa Jurusan Sistem Informasi yang rutin diadakan setiap Ramadan untuk berbuka dan berbagi bersama, sekaligus mempererat silaturahmi keluarga besar Fasilkom. Masjid Baitul Ghafur, Universitas Esa Unggul.', '2025-03-21', 1),
 (5, 'Skill Up', 'Kegiatan berbagi pengalaman dan wawasan bersama pengurus HIMASTIKA dari periode sebelumnya, guna memberikan insight, inspirasi, serta pembelajaran berharga bagi pengurus dan anggota aktif dalam mengembangkan soft skill dan hard skill sebagai bekal menghadapi dunia organisasi maupun dunia kerja.', '2025-06-07', 1),
-(6, 'Sosial Kita', 'Program pengabdian masyarakat yang diselenggarakan oleh HIMASTIKA bekerja sama dengan Panti Yauma Palmerah Asrama Yatim dan Dhu\'afa, sebagai bentuk nyata dalam memperkuat empati serta kepedulian sosial terhadap sesama.', '2025-07-05', 1),
-(7, 'Seminar HIMASTIKA X HUMANIS', 'Seminar kolaborasi antara HIMASTIKA dan HUMANIS yang membahas topik Cyber Security dengan narasumber inspiratif.', '2025-06-21', 1);
+(6, 'Pengabdian Masyarakat: Sosial Kita', 'Bertema "Aksi Hima: Peduli dan Berbagi". Kegiatan di panti asuhan untuk menumbuhkan empati dan kontribusi nyata, sekaligus mengenalkan anak-anak pada pentingnya teknologi dalam pendidikan dan kehidupan sehari-hari. Panti Yauma Asrama Yatim dan Dhu\'afa Palmerah.', '2025-07-06', 1),
+(7, 'Seminar HIMASTIKA x HUMANIS', 'Seminar gabungan HIMASTIKA dan HUMANIS bertema "Behind the Firewall: Ungkap Dunia Cyber dari Etika sampai Eksploitasi". Ruang 406, Gedung A, Universitas Esa Unggul.', '2025-06-23', 1),
+(8, 'Company Visit', 'Kunjungan ke perusahaan untuk melihat langsung proses operasional dan manajerial yang berlangsung di dalamnya. Dilaksanakan di PT Jasa Raharja dan Kementerian Ketenagakerjaan (Kemnaker).', '2025-10-24', 1),
+(9, 'FASTHER (Fasilkom Gathering)', 'Kegiatan tahunan Fasilkom untuk mempererat tali persaudaraan dan solidaritas keluarga besar Fakultas Ilmu Komputer. Acara gabungan HIMASTIKA dan HUMANIS. Segera hadir.', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -343,7 +349,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `informasi`
@@ -379,7 +385,7 @@ ALTER TABLE `pengurus`
 -- AUTO_INCREMENT for table `proker`
 --
 ALTER TABLE `proker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `saran`

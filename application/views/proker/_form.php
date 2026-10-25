@@ -19,7 +19,8 @@
       </div>
       <div class="field" style="max-width:260px">
         <label for="tanggal">Tanggal Pelaksanaan</label>
-        <input class="input" type="date" id="tanggal" name="tanggal" required value="<?= html_escape($edit ? $proker->tanggal : ''); ?>">
+        <input class="input" type="date" id="tanggal" name="tanggal" value="<?= html_escape($edit ? (string) $proker->tanggal : ''); ?>">
+        <span class="hint">Kosongkan jika tanggal belum ditentukan.</span>
       </div>
       <div class="form-actions">
         <a href="<?= base_url('proker'); ?>" class="btn btn-ghost"><?= icon('arrow-left'); ?> Kembali</a>

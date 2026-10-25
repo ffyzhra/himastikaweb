@@ -57,10 +57,14 @@ $cards = [
       <ul class="list">
         <?php foreach ($proker as $p): ?>
           <li>
-            <span class="date-chip"><b><?= date('j', strtotime($p->tanggal)); ?></b><small><?= bulan_singkat($p->tanggal); ?></small></span>
+            <?php if (!empty($p->tanggal)): ?>
+              <span class="date-chip"><b><?= date('j', strtotime($p->tanggal)); ?></b><small><?= bulan_singkat($p->tanggal); ?></small></span>
+            <?php else: ?>
+              <span class="date-chip"><b>?</b><small>TBA</small></span>
+            <?php endif; ?>
             <div style="min-width:0;flex:1">
               <div class="title"><?= html_escape($p->judul); ?></div>
-              <div class="meta"><?= tgl($p->tanggal); ?></div>
+              <div class="meta"><?= !empty($p->tanggal) ? tgl($p->tanggal) : 'Tanggal menyusul'; ?></div>
             </div>
             <?php if ((int) $p->status === 1): ?>
               <span class="badge badge-done">Selesai</span>

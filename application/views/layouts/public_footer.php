@@ -9,7 +9,11 @@
             <span>Kabinet Sinergi Harmoni</span>
           </div>
         </a>
-        <p style="max-width:380px">Himpunan Mahasiswa Teknik Informatika, Fakultas Ilmu Komputer, Universitas Esa Unggul, Jakarta.</p>
+        <p style="max-width:380px">Himpunan Mahasiswa Jurusan Teknik Informatika, Fakultas Ilmu Komputer, Universitas Esa Unggul, Jakarta.</p>
+        <p style="margin-top:14px">
+          <a href="mailto:himastika.esaunggul@gmail.com" style="display:flex;align-items:center;gap:8px"><?= icon('mail'); ?> himastika.esaunggul@gmail.com</a>
+          <a href="https://www.instagram.com/himastika_ueu" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px"><?= icon('globe'); ?> @himastika_ueu</a>
+        </p>
       </div>
       <div>
         <h4>Jelajahi</h4>

@@ -38,7 +38,7 @@ $persen = $total ? round($selesai / $total * 100) : 0;
                   <div class="cell-muted clamp"><?= html_escape($p->deskripsi); ?></div>
                 <?php endif; ?>
               </td>
-              <td style="white-space:nowrap"><?= tgl($p->tanggal); ?></td>
+              <td style="white-space:nowrap"><?= !empty($p->tanggal) ? tgl($p->tanggal) : '<span class="cell-muted">Menyusul</span>'; ?></td>
               <td>
                 <label class="switch">
                   <input type="checkbox" data-proker-status="<?= (int) $p->id; ?>" <?= $done ? 'checked' : ''; ?> aria-label="Tandai <?= html_escape($p->judul); ?> selesai">

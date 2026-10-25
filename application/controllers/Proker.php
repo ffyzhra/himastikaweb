@@ -25,7 +25,7 @@ class Proker extends Admin_Controller {
         $data = [
             'judul' => $this->input->post('judul', TRUE),
             'deskripsi' => $this->input->post('deskripsi', TRUE),
-            'tanggal' => $this->input->post('tanggal', TRUE),
+            'tanggal' => $this->input->post('tanggal', TRUE) ?: null, // kosong = tanggal menyusul
             'status' => 0 // default belum selesai
         ];
 
@@ -51,7 +51,7 @@ class Proker extends Admin_Controller {
         $data = [
             'judul' => $this->input->post('judul', TRUE),
             'deskripsi' => $this->input->post('deskripsi', TRUE),
-            'tanggal' => $this->input->post('tanggal', TRUE)
+            'tanggal' => $this->input->post('tanggal', TRUE) ?: null
         ];
 
         if ($this->Proker_model->update($id, $data)) {

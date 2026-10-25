@@ -2,7 +2,7 @@
 $this->load->view('layouts/public_header', ['title' => 'Daftar Anggota · HIMASTIKA UEU', 'solid_nav' => false]);
 $divisi = [
     'Sekretaris', 'Bendahara', 'Sinergi', 'Dukungan dan Solidaritas', 'Kajian Strategis',
-    'Inovasi dan Prestasi', 'Kreativa dan Komunikasi', 'Kemitraan dan Relasi',
+    'Inovasi dan Prestasi', 'Kreativa dan Komunikasi', 'Relasi dan Kemitraan',
 ];
 $admin = (bool) $this->session->userdata('logged_in');
 ?>

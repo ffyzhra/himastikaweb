@@ -57,7 +57,8 @@ $divisi = $this->input->get('divisi') ?: 'all';
               <td><?= html_escape($a->jabatan); ?></td>
               <td><span class="badge plain"><?= html_escape($a->divisi); ?></span></td>
               <td class="cell-muted">
-                <?= html_escape($a->email); ?><br><?= html_escape($a->no_telp); ?>
+                <?php if (empty($a->email) && empty($a->no_telp)): ?>-<?php endif; ?>
+                <?= html_escape($a->email); ?><?= (!empty($a->email) && !empty($a->no_telp)) ? '<br>' : ''; ?><?= html_escape($a->no_telp); ?>
               </td>
               <td>
                 <div class="actions">

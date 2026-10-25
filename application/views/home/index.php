@@ -1,15 +1,20 @@
 <?php
 $this->load->view('layouts/public_header');
 
-// Ringkasan tiap divisi (silakan sesuaikan deskripsinya)
+// Deskripsi divisi sesuai Profile HIMASTIKA Kabinet Sinergi Harmoni 2024/2025
 $info_divisi = [
-    'Badan Pengurus Harian'    => ['layers',    'Ketua, sekretaris dan bendahara yang mengarahkan dan mengoordinasikan seluruh divisi.'],
-    'Sinergi'                  => ['users',     'Menjaga kekompakan internal dan hubungan antaranggota himpunan.'],
-    'Dukungan dan Solidaritas' => ['heart',     'Kegiatan sosial dan kepedulian untuk mahasiswa dan masyarakat.'],
-    'Kajian Strategis'         => ['target',    'Menampung aspirasi mahasiswa dan mengkaji isu yang berdampak pada jurusan.'],
-    'Inovasi dan Prestasi'     => ['trophy',    'Mendorong prestasi akademik, lomba dan pengembangan skill teknologi.'],
-    'Kreativa dan Komunikasi'  => ['pen-tool',  'Desain, dokumentasi dan pengelolaan media sosial HIMASTIKA.'],
-    'Kemitraan dan Relasi'     => ['handshake', 'Membangun kerja sama dengan himpunan lain, alumni dan mitra industri.'],
+    'Badan Pengurus Harian'    => ['layers',    'Ketua, Wakil Ketua, Sekretaris dan Bendahara. Memimpin kabinet, mengelola administrasi dan surat-menyurat, serta merencanakan dan melaporkan keuangan HIMASTIKA secara transparan.'],
+    'Sinergi'                  => ['users',     'Memperkuat hubungan antar anggota HIMASTIKA dan mahasiswa TI lewat ruang kolaboratif: memfasilitasi komunikasi, mendorong partisipasi, dan memastikan setiap anggota merasa dihargai.'],
+    'Inovasi dan Prestasi'     => ['trophy',    'Mengembangkan ide kreatif dan inovatif demi kemajuan HIMASTIKA, serta memotivasi anggota berprestasi di bidang akademik, organisasi dan pengembangan diri.'],
+    'Kreativa dan Komunikasi'  => ['pen-tool',  'Membuat konten kreatif, materi promosi, dan mengelola media sosial serta postingan di seluruh platform HIMASTIKA.'],
+    'Relasi dan Kemitraan'     => ['handshake', 'Membangun dan menjaga hubungan dengan organisasi, perusahaan dan lembaga eksternal untuk kemitraan strategis yang mendukung program HIMASTIKA.'],
+    'Kajian Strategis'         => ['target',    'Mengkaji dan membahas isu terkini yang relevan dengan mahasiswa, menghadirkan wawasan baru dan mendorong mahasiswa lebih peka terhadap perkembangan di sekitar.'],
+    'Dukungan dan Solidaritas' => ['heart',     'Mendukung mahasiswa TI di bidang akademik dan sosial melalui bimbingan, pendampingan, dan kegiatan yang mempererat kebersamaan.'],
+];
+$misi = [
+    'Meningkatkan komunikasi dan keterlibatan anggota.',
+    'Membangun lingkungan yang kolaboratif dan inklusif.',
+    'Menciptakan sistem kerja HIMASTIKA yang efektif dan produktif.',
 ];
 $tones = ['tone-blue', 'tone-yellow', 'tone-green', 'tone-purple', 'tone-rose'];
 ?>
@@ -19,7 +24,7 @@ $tones = ['tone-blue', 'tone-yellow', 'tone-green', 'tone-purple', 'tone-rose'];
     <div>
       <span class="pill"><?= icon('sparkles'); ?> Kabinet Sinergi Harmoni</span>
       <h1>Tumbuh bersama di <em>Teknik Informatika</em> Esa Unggul.</h1>
-      <p class="lead">HIMASTIKA adalah rumah bagi mahasiswa Teknik Informatika Universitas Esa Unggul untuk belajar, berkarya dan berkontribusi lewat program kerja yang nyata.</p>
+      <p class="lead">Himpunan Mahasiswa Jurusan Teknik Informatika Universitas Esa Unggul, wadah untuk berkembang bersama dengan mengedepankan kerja sama, saling menghormati, dan kreativitas.</p>
       <div class="cta">
         <a href="<?= base_url('daftar'); ?>" class="btn btn-yellow btn-lg"><?= icon('user-plus'); ?> Daftar Jadi Anggota</a>
         <a href="#proker" class="btn btn-outline-light btn-lg">Lihat Program Kerja</a>
@@ -51,24 +56,22 @@ $tones = ['tone-blue', 'tone-yellow', 'tone-green', 'tone-purple', 'tone-rose'];
     <div class="reveal">
       <p class="eyebrow">Tentang Kami</p>
       <div class="section-head" style="margin-bottom:20px">
-        <h2>Wadah mahasiswa Teknik Informatika untuk bergerak bersama.</h2>
-        <p>Himpunan Mahasiswa Teknik Informatika (HIMASTIKA) menjadi penghubung antara mahasiswa, dosen dan jurusan. Lewat kabinet Sinergi Harmoni, kami menghadirkan kegiatan akademik, sosial dan pengembangan diri yang terbuka untuk semua mahasiswa Teknik Informatika.</p>
+        <h2>Apa itu Kabinet Sinergi Harmoni?</h2>
+        <p>Kabinet Sinergi Harmoni merupakan wadah bagi anggota HIMASTIKA untuk berkembang bersama dengan mengedepankan kerja sama, saling menghormati, dan kreativitas. Kabinet ini bertujuan menciptakan lingkungan yang positif, inklusif, dan produktif, sehingga seluruh mahasiswa Teknik Informatika memiliki kesempatan untuk berkontribusi dan mengembangkan diri.</p>
       </div>
       <a href="<?= base_url('daftar'); ?>" class="btn btn-primary">Bergabung sekarang <?= icon('arrow-right'); ?></a>
     </div>
     <div class="values reveal">
       <div class="value">
-        <span class="stat-icon tone-blue"><?= icon('book'); ?></span>
-        <div><h3>Belajar</h3><p>Seminar, studi banding dan kelas skill untuk melengkapi perkuliahan.</p></div>
+        <span class="stat-icon tone-blue"><?= icon('target'); ?></span>
+        <div><h3>Visi</h3><p>Menjadikan HIMASTIKA sebagai wadah yang terorganisir dengan baik, memberikan ruang bagi setiap mahasiswa Teknik Informatika untuk berkembang secara maksimal dalam berbagai aspek kehidupan kampus.</p></div>
       </div>
-      <div class="value">
-        <span class="stat-icon tone-yellow"><?= icon('zap'); ?></span>
-        <div><h3>Berkarya</h3><p>Ruang untuk mencoba ide, ikut lomba dan membangun proyek bersama.</p></div>
-      </div>
-      <div class="value">
-        <span class="stat-icon tone-green"><?= icon('heart'); ?></span>
-        <div><h3>Berkontribusi</h3><p>Kegiatan sosial dan kolaborasi dengan himpunan serta masyarakat.</p></div>
-      </div>
+      <?php $mt = ['tone-yellow', 'tone-green', 'tone-purple']; foreach ($misi as $i => $m): ?>
+        <div class="value">
+          <span class="stat-icon <?= $mt[$i]; ?>" style="font-weight:800"><?= $i + 1; ?></span>
+          <div><h3>Misi <?= $i + 1; ?></h3><p><?= html_escape($m); ?></p></div>
+        </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -120,7 +123,7 @@ $tones = ['tone-blue', 'tone-yellow', 'tone-green', 'tone-purple', 'tone-rose'];
             </div>
             <h3><?= html_escape($p->judul); ?></h3>
             <?php if (!empty($p->deskripsi)): ?><p><?= html_escape($p->deskripsi); ?></p><?php endif; ?>
-            <span class="date"><?= icon('calendar'); ?> <?= tgl($p->tanggal); ?></span>
+            <span class="date"><?= icon('calendar'); ?> <?= !empty($p->tanggal) ? tgl($p->tanggal) : 'Segera hadir'; ?></span>
           </article>
         <?php endforeach; ?>
       </div>
