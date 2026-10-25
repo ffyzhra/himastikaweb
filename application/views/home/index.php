@@ -4,7 +4,6 @@ $divs  = $this->config->item('divisi');
 $hero  = array_values(array_filter(array_map('foto_url', $this->config->item('hero_foto'))));
 $tones = ['tone-blue', 'tone-yellow', 'tone-green', 'tone-purple', 'tone-rose'];
 $bph   = isset($per_divisi['bph']) ? $per_divisi['bph'] : [];
-$stack = array_values(array_filter($bph, function ($a) { return foto_url($a->foto); }));
 ?>
 
 <!-- ================= HERO ================= -->
@@ -24,14 +23,11 @@ $stack = array_values(array_filter($bph, function ($a) { return foto_url($a->fot
         <a href="<?= base_url('pengurus'); ?>" class="btn btn-outline-light btn-lg">Kenali Pengurus</a>
       </div>
     </div>
-    <?php if (count($stack) >= 3): ?>
-      <div class="hero-stack" aria-hidden="true">
-        <figure class="f1"><img src="<?= foto_url($stack[0]->foto); ?>" alt=""></figure>
-        <figure class="f2"><img src="<?= foto_url($stack[1]->foto); ?>" alt=""></figure>
-        <figure class="f3"><img src="<?= foto_url($stack[4]->foto ?? $stack[2]->foto); ?>" alt=""></figure>
-        <div class="badge-float"><img src="<?= base_url('assets/img/logo-himastika.jpg'); ?>" alt=""> <?= $total_anggota; ?> pengurus · <?= $total_intern; ?> intern</div>
-      </div>
-    <?php endif; ?>
+    <div class="hero-logo" aria-hidden="true">
+      <span class="ring r1"></span><span class="ring r2"></span><span class="glow"></span>
+      <img src="<?= base_url('assets/img/logo-himastika.png'); ?>" alt="">
+      <div class="badge-float"><?= icon('users'); ?> <?= $total_anggota; ?> pengurus · <?= $total_intern; ?> intern</div>
+    </div>
   </div>
   <?php if (count($hero) > 1): ?>
     <div class="hero-dots">
